@@ -51,7 +51,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     const bgVideo = backgroundVideoRef.current;
     const maskGroup = maskGroupRef.current;
 
-    const scrollDuration = 3000;
+    const scrollDuration = 2000;
     const finalScale = 800; // Zoom ultra-violent x800 pour traverser la ligne laser de 1.2px
 
     const ctx = gsap.context(() => {
@@ -60,13 +60,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         visibility: 'visible',
       });
 
-      // Initialiser le groupe du masque avec transform-origin au centre (50% 50%)
-     gsap.set(maskGroup, {
-  scale: 1,
-  // 50 50 correspond au centre exact de ton viewBox="0 0 100 100"
-  svgOrigin: "50 50", 
-  willChange: 'transform',
-});
+      // Initialiser le groupe du masque avec transform-origin au centre exact (50% 50%)
+      // Le rectangle fantôme force le groupe à faire exactement 100x100, donc 50% 50% = centre absolu
+      gsap.set(maskGroup, {
+        scale: 1,
+        transformOrigin: '50% 50%',
+        willChange: 'transform',
+      });
 
       // Vidéo de fond : visible dès le départ (elle est visible à travers les trous du masque)
       gsap.set(bgVideo, {
@@ -75,45 +75,49 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         willChange: 'transform, opacity',
       });
 
-      // ScrollTrigger
-      ScrollTrigger.create({
-        trigger: container,
-        start: 'top top',
-        end: `+=${scrollDuration}`,
-        pin: true,
-        pinSpacing: true,
-        scrub: 1,
-        anticipatePin: 1,
-        markers: true,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          if (!self || typeof self.progress !== 'number') return;
-          const progress = self.progress;
-
-          // Zoom massif sur le groupe du masque (centré sur la barre à 50% 50%)
-          const scale = 1 + progress * (finalScale - 1);
-          gsap.set(maskGroup, { scale });
-
-          // Faire apparaître la vidéo progressivement pendant le zoom
-          // Commencer à partir de 20% du scroll, complète à 80%
-          const bgOpacity = progress < 0.2 ? 1 : Math.min(1 + (progress - 0.2) / 0.6, 1);
-          gsap.set(bgVideo, {
-            opacity: bgOpacity,
-            scale: 1 + progress * 0.2, // Légèrement zoomer pour remplir l'écran
-          });
-        },
-        onLeave: () => {
-          // Quand on quitte la section, vidéo pleine écran
-          gsap.set(bgVideo, {
-            opacity: 1,
-            scale: 1.2,
-            willChange: 'auto',
-          });
-          gsap.set(maskGroup, { 
-            willChange: 'auto' 
-          });
+      // Créer une Timeline avec ScrollTrigger pour une animation fluide et réactive
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: 'top top',
+          end: `+=${scrollDuration}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: 2, // Fluidité maximale au descroll avec inertie soyeuse
+          invalidateOnRefresh: true, // FIX : Recalcule tout au changement de taille de fenêtre
+          anticipatePin: 1, // Évite les petits sauts visuels au début du pin
+          onLeave: () => {
+            // Nettoyage et verrouillage de la vidéo en plein écran à la fin
+            gsap.set(bgVideo, {
+              opacity: 1,
+              scale: 1.2,
+              willChange: 'auto',
+            });
+            gsap.set(maskGroup, { 
+              willChange: 'auto' 
+            });
+          },
+          onEnterBack: () => {
+            // Réactive l'optimisation GPU quand on remonte (descroll)
+            gsap.set(maskGroup, { willChange: 'transform' });
+            gsap.set(bgVideo, { willChange: 'transform, opacity' });
+          },
         },
       });
+
+      // Animer le zoom du masque avec transformOrigin verrouillé au centre (50% 50%)
+      // Le rectangle fantôme garantit que 50% 50% = centre absolu (50, 50)
+      tl.to(maskGroup, {
+        scale: finalScale,
+        transformOrigin: '50% 50%',
+        duration: 1,
+        ease: 'none', // Interpolation linéaire pour suivre le scroll
+      })
+      .to(bgVideo, {
+        scale: 1.2,
+        duration: 1,
+        ease: 'none',
+      }, 0); // Démarre en même temps que le zoom du masque
 
       ScrollTrigger.refresh();
     }, container);
@@ -159,14 +163,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       {/* SVG masque inversé - position fixed, z-10 */}
       <svg
-        className="fixed inset-0 w-full h-full"
-        style={{
-          zIndex: 10,
-          pointerEvents: 'none',
-        }}
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
+  className="fixed inset-0 w-full h-full"
+  style={{ zIndex: 10, pointerEvents: 'none' }}
+  viewBox="0 0 100 100"
+  preserveAspectRatio="xMidYMid slice" // CHANGE CECI
+>
         <defs>
           <mask id="portalMask" maskUnits="userSpaceOnUse">
             {/* Fond blanc (visible) */}
@@ -174,9 +175,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             
             {/* Groupe noir (trous) */}
             <g ref={maskGroupRef} id="mask-group" fill="black">
+              {/* Rectangle fantôme pour forcer les dimensions 100x100 */}
+              <rect width="100" height="100" fill="none" />
               <text
                 x="50%"
-                y="47%"
+                y="46"
                 textAnchor="middle"
                 dominantBaseline="alphabetic"
                 fontSize="18"
@@ -186,18 +189,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               >
                 COCHOD
               </text>
-              {/* Ligne laser ultra-fine de 1.2px, centrée à 50% verticalement avec précision mathématique */}
-              <rect
-  x="25"      // Utilise des chiffres sans % pour plus de précision avec svgOrigin
-  y="50"      // Pile au milieu
-  width="50"
+             {/* LE RECTANGLE : Pile au milieu (50) */}
+             <rect
+  x="0"         // Commence au bord gauche
+  y="50"        // Pile au milieu vertical
+  width="100"   // Toute la largeur du viewBox
   height="1.2"
+  transform="translate(0, -0.6)"
   fill="black"
-  transform="translate(0, -0.6)" // Décale de la moitié de la hauteur pour un centrage parfait
 />
               <text
                 x="50%"
-                y="53%"
+                y="54"
                 textAnchor="middle"
                 dominantBaseline="hanging"
                 fontSize="18"
