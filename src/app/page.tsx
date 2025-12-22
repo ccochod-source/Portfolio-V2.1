@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ProjectGrid } from '@/components/organisms/ProjectGrid';
+import { ProjectParallax } from '@/components/organisms/ProjectParallax';
 import { HeroSection } from '@/components/organisms/HeroSection';
 
 export default function Home() {
@@ -10,10 +10,8 @@ export default function Home() {
       {/* Hero Section avec effet Portal - Pin & Zoom */}
       <HeroSection />
 
-      {/* Section des projets - Scroll snapping activé */}
-      <section aria-label="Section des projets">
-        <ProjectGrid />
-      </section>
+      {/* Section des projets - Stacking Parallax Effect */}
+      <ProjectParallax />
     </main>
   );
 }
