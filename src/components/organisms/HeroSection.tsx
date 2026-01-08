@@ -224,31 +224,41 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <span className="text-sm font-medium" style={{ color: '#3A3A3A' }}>
             Scroll
           </span>
-          <div
-            className="w-6 h-10 border-2 rounded-full flex items-start justify-center p-2"
-            style={{ borderColor: '#3A3A3A' }}
-          >
-            <div
-              className="w-1 h-3 rounded-full animate-bounce"
-              style={{
-                backgroundColor: '#3A3A3A',
-                animation: 'bounce 2s infinite',
-              }}
-            />
+          <div className="flex flex-col items-center">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="animate-bounce-arrow"
+              style={{ color: '#3A3A3A' }}
+            >
+              <path
+                d="M7 10L12 15L17 10"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes bounce {
+        @keyframes bounce-arrow {
           0%, 100% {
             transform: translateY(0);
             opacity: 1;
           }
           50% {
-            transform: translateY(12px);
-            opacity: 0.7;
+            transform: translateY(8px);
+            opacity: 0.6;
           }
+        }
+        .animate-bounce-arrow {
+          animation: bounce-arrow 2s ease-in-out infinite;
         }
       `}</style>
     </section>

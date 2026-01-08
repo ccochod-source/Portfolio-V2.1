@@ -1,26 +1,58 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Text } from '@/components/atoms/Text';
-import { slideInLeft } from '@/lib/animations';
+import { slideInLeft, slideInRight } from '@/lib/animations';
 
 export const Header: React.FC = () => {
+  const pathname = usePathname();
+
   return (
     <motion.header
       variants={slideInLeft}
       initial="hidden"
       animate="visible"
-      className="w-full py-8 md:py-12"
+      className="w-full py-8 md:py-12 px-6 md:px-8 backdrop-blur-sm bg-cream/80"
     >
-      <nav className="flex items-center justify-between">
+      <nav className="flex items-center justify-center max-w-7xl mx-auto">
         <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          variants={slideInRight}
+          initial="hidden"
+          animate="visible"
+          className="flex items-center gap-6"
         >
-          <Text variant="h3" as="h1" className="text-accent-dark">
-            Portfolio
-          </Text>
+          <Link
+            href="/"
+            className={`text-base font-medium transition-colors duration-300 ${
+              pathname === '/'
+                ? 'text-accent-dark'
+                : 'text-text hover:text-accent-dark'
+            }`}
+          >
+            Accueil
+          </Link>
+          <Link
+            href="/projects"
+            className={`text-base font-medium transition-colors duration-300 ${
+              pathname === '/projects'
+                ? 'text-accent-dark'
+                : 'text-text hover:text-accent-dark'
+            }`}
+          >
+            Projets
+          </Link>
+          <Link
+            href="/about"
+            className={`text-base font-medium transition-colors duration-300 ${
+              pathname === '/about'
+                ? 'text-accent-dark'
+                : 'text-text hover:text-accent-dark'
+            }`}
+          >
+            À propos
+          </Link>
         </motion.div>
       </nav>
     </motion.header>
