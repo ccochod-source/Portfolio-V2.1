@@ -54,6 +54,17 @@ export const parallaxProjects: ParallaxProject[] = [
       { url: 'https://docs.google.com/spreadsheets/d/1JZKTVJMfaLkBYb8Slpvts0pnSDhyRS8baDxn33wMP68/edit?usp=sharing', label: 'Voir les données' },
     ],
   },
+  {
+    id: '6',
+    title: 'Eugeniagram',
+    description: 'Ce projet est une application web conçue comme un réseau social de portfolios, inspirée par l\'ergonomie d\'Instagram. Elle permet aux étudiants de centraliser, documenter et valoriser visuellement leurs travaux académiques et projets personnels au sein d\'un fil d\'actualité dynamique. Pour l\'école, cet outil constitue une vitrine interactive et moderne, idéale pour promouvoir les talents des différentes filières auprès des recruteurs et futurs partenaires.',
+    imageSrc: '/eugeniagram.png',
+    color: '#E8D4E6',
+    videoUrl: '/eugeniagram.mp4',
+    link: [
+      { url: '/eugeniagram.mp4', label: 'Voir la démo vidéo' },
+    ],
+  },
 ];
 
 

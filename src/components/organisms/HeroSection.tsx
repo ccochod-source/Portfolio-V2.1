@@ -51,7 +51,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     const bgVideo = backgroundVideoRef.current;
     const maskGroup = maskGroupRef.current;
 
-    const scrollDuration = 2000;
+    const scrollDuration = 1500;
     const finalScale = 800; // Zoom ultra-violent x800 pour traverser la ligne laser de 1.2px
 
     const ctx = gsap.context(() => {
