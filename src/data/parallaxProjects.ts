@@ -26,11 +26,15 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: '3',
-    title: 'Analyse Northwind',
-    description: 'Analyse approfondie de la base de données Northwind (commerce de produits alimentaires). Modélisation des données, création d\'un dashboard Looker Studio et analyse multidimensionnelle des performances commerciales par produit, région et période. Identification des clients les plus rentables, des tendances temporelles et des opportunités d\'optimisation',
-    imageSrc: '/northwind-dashboard.png',
-    color: '#B8D4E3',
-    link: 'https://docs.google.com/document/d/1PO4XfCnuDaMTMx0oBu71ZigprCCQ9w62BLSsGclEISw/edit?usp=sharing',
+    title: 'PayFit — plateforme d’articles IA (EEAT + SEO)',
+    description:
+      'Plateforme d’articles IA conçue pour automatiser la création de contenus EEAT-optimisés (Expertise, Authoritativeness, Trustworthiness) pour PayFit.\n\nJ’ai développé des agents IA sur Dust pour générer des articles professionnels sur la paie et les RH, avec vérification législative et SEO intégré.\n\nStack : React (front), Canva (visuels & mockups), agents Dust via API (EEAT/SEO/vérification légale), SQL (bases RH), Looker Studio (analytics), déploiement Vercel.\n\nImpact : articles prêts à publier en quelques minutes, amélioration du potentiel de trafic organique. Projet réalisé en solo lors d’un hackathon scolaire (1er prix).',
+    imageSrc: '/payfit-slide-1.png',
+    color: '#D7E6F6',
+    link: [
+      { url: 'https://payfit-pied.vercel.app', label: 'Voir la démo' },
+      { url: 'https://canva.link/522x4im8hv0crvz', label: 'Voir les mockups Canva' },
+    ],
   },
   {
     id: '4',
@@ -45,13 +49,14 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: '5',
-    title: 'Analyse Accidentologie',
-    description: 'Analyse géographique et territoriale de l\'accidentologie routière en France basée sur les données BAAC 2024. Identification des zones à risques, analyse des facteurs explicatifs (densité, urbanisation, topographie) et comparaison entre métropole et outre-mer. Découverte principale : l\'outre-mer présente un taux de tués 5.7x plus élevé que la métropole.',
-    imageSrc: '/accidentologie.png',
-    color: '#F5E6D3',
+    title: 'Sephora Intel — Brand & Market Intelligence',
+    description:
+      'Plateforme d’intelligence marché et de veille e-réputation (Sephora vs Nocibé) alimentée par 170 000 signaux multi-sources.\n\nPipeline Make.com + Supabase + enrichissement LLM pour produire un dashboard temps réel, des alertes “bad buzz” et des synthèses automatiques.\n\nDéployé sur Vercel · soutenance jury pro (avril 2026).',
+    imageSrc: '/sephora-intel.png',
+    color: '#F3E9FF',
     link: [
-      { url: 'https://www.canva.com/design/DAG4h3loszs/Wkr_gkWxS7c56OftfluiFQ/edit?utm_content=DAG4h3loszs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton', label: 'Voir la présentation' },
-      { url: 'https://docs.google.com/spreadsheets/d/1JZKTVJMfaLkBYb8Slpvts0pnSDhyRS8baDxn33wMP68/edit?usp=sharing', label: 'Voir les données' },
+      { url: 'https://bbd-licter.vercel.app/', label: 'Voir le dashboard' },
+      { url: '/SEPHORA_INTEL_Soutenance_2026.pdf', label: 'Voir la soutenance (PDF)' },
     ],
   },
   {

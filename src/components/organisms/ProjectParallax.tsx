@@ -311,20 +311,43 @@ export const ProjectParallax: React.FC = () => {
 
               {/* Section Droite - Image (55%) */}
               <div className="w-[55%] flex items-center justify-center p-4">
-                <div className="relative w-full h-full rounded-3xl overflow-hidden">
-                  <Image
-                    src={project.imageSrc}
-                    alt={project.title}
-                    fill
-                    className="rounded-3xl"
-                    style={{
-                      objectFit: 'cover',
-                      objectPosition: project.id === '5' ? '25% center' : 'center 20%',
-                    }}
-                    sizes="(max-width: 768px) 100vw, 55vw"
-                    priority={index === 0}
-                  />
-                </div>
+                {project.id === '3' || project.id === '5' ? (
+                  <div
+                    className={`w-full h-full rounded-3xl overflow-hidden p-4 ${
+                      project.id === '5' ? 'bg-[#0b0b0b]' : 'bg-white'
+                    }`}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={project.imageSrc}
+                        alt={project.title}
+                        fill
+                        className="rounded-2xl"
+                        style={{
+                          objectFit: 'contain',
+                          objectPosition: 'center',
+                        }}
+                        sizes="(max-width: 768px) 100vw, 55vw"
+                        priority={index === 0}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative w-full h-full rounded-3xl overflow-hidden">
+                    <Image
+                      src={project.imageSrc}
+                      alt={project.title}
+                      fill
+                      className="rounded-3xl"
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: project.id === '5' ? '25% center' : 'center 20%',
+                      }}
+                      sizes="(max-width: 768px) 100vw, 55vw"
+                      priority={index === 0}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>

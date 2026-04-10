@@ -8,7 +8,7 @@ import { Header } from '@/components/organisms/Header';
 import { Footer } from '@/components/organisms/Footer';
 import { Text } from '@/components/atoms/Text';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { parallaxProjects } from '@/data/parallaxProjects';
+import { allProjects } from '@/data/allProjects';
 
 export default function ProjectsPage() {
   return (
@@ -34,7 +34,7 @@ export default function ProjectsPage() {
 
           {/* Grid des projets */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {parallaxProjects.filter((project) => project.id !== '1').map((project) => (
+            {allProjects.filter((project) => project.id !== '1').map((project) => (
               <motion.div
                 key={project.id}
                 variants={fadeInUp}
@@ -47,14 +47,22 @@ export default function ProjectsPage() {
                   }}
                 >
                   {/* Image */}
-                  <div className="relative w-full h-48 md:h-56 overflow-hidden">
-                    <Image
-                      src={project.imageSrc}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+                  <div
+                    className={`relative w-full h-48 md:h-56 overflow-hidden ${
+                      project.id === '5' ? 'bg-[#0b0b0b] p-3' : ''
+                    }`}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={project.imageSrc}
+                        alt={project.title}
+                        fill
+                        className={`transition-transform duration-300 ${
+                          project.id === '5' ? 'object-contain' : 'object-cover group-hover:scale-105'
+                        }`}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
                   </div>
 
                   {/* Contenu */}
