@@ -5,6 +5,8 @@ import { notFound } from 'next/navigation';
 import { Header } from '@/components/organisms/Header';
 import { Footer } from '@/components/organisms/Footer';
 import { Text } from '@/components/atoms/Text';
+import { PresentationAwareLink } from '@/components/atoms/PresentationAwareLink';
+import { ProjectSlidesModal } from '@/components/molecules/ProjectSlidesModal';
 import { getProjectBySlug, getProjectsWithSlug } from '@/lib/projects';
 import {
   getFlatProjectLinks,
@@ -107,6 +109,10 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
         </div>
 
+        {project.slideshowSrcs && project.slideshowSrcs.length > 0 && (
+          <ProjectSlidesModal slideshowSrcs={project.slideshowSrcs} projectTitle={project.title} />
+        )}
+
         {embeddedVideoHref && (
           <section className="mb-12" aria-labelledby="embed-video-heading">
             <h2 id="embed-video-heading" className="text-lg font-semibold text-text-dark mb-3">
@@ -188,7 +194,6 @@ export default async function ProjectDetailPage({ params }: Props) {
             <ul className="space-y-3">
               {resourceOnlyLinks.map((item) => {
                 const cat = linkCategory(item.url);
-                const isExternal = /^https?:\/\//i.test(item.url);
                 const key = `${item.url}-${item.label}`;
                 return (
                   <li
@@ -196,14 +201,12 @@ export default async function ProjectDetailPage({ params }: Props) {
                     className="flex flex-wrap items-center gap-2 rounded-lg border border-sand/70 bg-white/80 px-4 py-3 shadow-sm"
                   >
                     <span className="text-xs uppercase tracking-wide text-text-light">{categoryBadgeLabel(cat)}</span>
-                    <a
+                    <PresentationAwareLink
                       href={item.url}
-                      target={isExternal ? '_blank' : undefined}
-                      rel={isExternal ? 'noopener noreferrer' : undefined}
                       className="flex-1 min-w-[12rem] text-text-dark font-medium hover:text-accent-dark transition-colors"
                     >
                       {item.label}
-                    </a>
+                    </PresentationAwareLink>
                     <span className="text-xs text-text-light truncate max-w-[16rem] hidden sm:inline">{item.url}</span>
                   </li>
                 );

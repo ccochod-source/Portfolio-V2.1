@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { parallaxProjects } from '@/data/parallaxProjects';
 import { getFlatProjectLinks } from '@/lib/projectResources';
+import { PresentationAwareLink } from '@/components/atoms/PresentationAwareLink';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -259,30 +260,25 @@ export const ProjectParallax: React.FC = () => {
                     </Link>
                   ) : (
                     <>
-                      {getFlatProjectLinks(project).map((item, linkIndex) => {
-                        const external = /^https?:\/\//i.test(item.url);
-                        return (
-                          <a
-                            key={`${item.url}-${linkIndex}`}
-                            href={item.url}
-                            target={external ? '_blank' : undefined}
-                            rel={external ? 'noopener noreferrer' : undefined}
-                            className="inline-flex items-center gap-2 text-base font-medium text-[#1a1a1a] relative group"
-                            style={{
-                              textDecoration: 'none',
-                              fontFamily: 'system-ui, -apple-system, sans-serif',
-                            }}
-                          >
-                            <span className="relative">
-                              {item.label}
-                              <span
-                                className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1a1a1a] transition-all duration-300 group-hover:w-full"
-                              />
-                            </span>
-                            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                          </a>
-                        );
-                      })}
+                      {getFlatProjectLinks(project).map((item, linkIndex) => (
+                        <PresentationAwareLink
+                          key={`${item.url}-${linkIndex}`}
+                          href={item.url}
+                          className="inline-flex items-center gap-2 text-base font-medium text-[#1a1a1a] relative group"
+                          style={{
+                            textDecoration: 'none',
+                            fontFamily: 'system-ui, -apple-system, sans-serif',
+                          }}
+                        >
+                          <span className="relative">
+                            {item.label}
+                            <span
+                              className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1a1a1a] transition-all duration-300 group-hover:w-full"
+                            />
+                          </span>
+                          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </PresentationAwareLink>
+                      ))}
                       {project.slug ? (
                         <Link
                           href={`/projects/${project.slug}`}

@@ -10,6 +10,7 @@ import { Text } from '@/components/atoms/Text';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { allProjects } from '@/data/allProjects';
 import { getFlatProjectLinks } from '@/lib/projectResources';
+import { PresentationAwareLink } from '@/components/atoms/PresentationAwareLink';
 
 export default function ProjectsPage() {
   return (
@@ -97,23 +98,18 @@ export default function ProjectsPage() {
                           </span>
                         </Link>
                       ) : null}
-                      {getFlatProjectLinks(project).map((linkItem, linkIndex) => {
-                        const isHttp = /^https?:\/\//i.test(linkItem.url);
-                        return (
-                          <a
-                            key={`${linkItem.url}-${linkIndex}`}
-                            href={linkItem.url}
-                            target={isHttp ? '_blank' : undefined}
-                            rel={isHttp ? 'noopener noreferrer' : undefined}
-                            className="inline-flex items-center gap-2 text-sm font-medium text-text-dark hover:text-accent-dark transition-colors duration-300 group/link"
-                          >
-                            <span>{linkItem.label}</span>
-                            <span className="transition-transform duration-300 group-hover/link:translate-x-1">
-                              →
-                            </span>
-                          </a>
-                        );
-                      })}
+                      {getFlatProjectLinks(project).map((linkItem, linkIndex) => (
+                        <PresentationAwareLink
+                          key={`${linkItem.url}-${linkIndex}`}
+                          href={linkItem.url}
+                          className="inline-flex items-center gap-2 text-sm font-medium text-text-dark hover:text-accent-dark transition-colors duration-300 group/link"
+                        >
+                          <span>{linkItem.label}</span>
+                          <span className="transition-transform duration-300 group-hover/link:translate-x-1">
+                            →
+                          </span>
+                        </PresentationAwareLink>
+                      ))}
                     </div>
                   </div>
                 </div>

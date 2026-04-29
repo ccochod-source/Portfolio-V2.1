@@ -53,7 +53,7 @@ export function linkCategory(url: string): 'pdf' | 'video' | 'google-doc' | 'goo
   }
   if (url.includes('docs.google.com/document')) return 'google-doc';
   if (url.includes('docs.google.com/spreadsheets') || url.includes('google.com/spreadsheets')) return 'google-sheet';
-  if (url.includes('canva.com')) return 'canva';
+  if (url.includes('canva.com') || url.includes('canva.link')) return 'canva';
   if (url.includes('vercel.app')) return 'dashboard';
   return 'other';
 }
