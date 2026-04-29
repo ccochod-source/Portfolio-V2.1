@@ -186,7 +186,7 @@ export const ProjectParallax: React.FC = () => {
           ref={(el) => {
             wrapperRefs.current[index] = el;
           }}
-          className="sticky flex items-center justify-center"
+          className="sticky flex items-center justify-center pointer-events-none"
           style={{
             top: `${20 + index * 20}px`,
             height: '100vh',
@@ -198,7 +198,7 @@ export const ProjectParallax: React.FC = () => {
             ref={(el) => {
               cardRefs.current[index] = el;
             }}
-            className="w-[90vw] max-w-[1200px] h-[75vh] rounded-[40px] shadow-xl flex flex-col overflow-hidden"
+            className="pointer-events-auto w-[90vw] max-w-[1200px] h-[75vh] rounded-[40px] shadow-xl flex flex-col overflow-hidden"
             style={{
               background: project.color || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             }}
