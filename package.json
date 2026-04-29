@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -H localhost",
+    "dev:fresh": "rm -rf .next && WATCHPACK_POLLING=true CHOKIDAR_USEPOLLING=true next dev -H localhost",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

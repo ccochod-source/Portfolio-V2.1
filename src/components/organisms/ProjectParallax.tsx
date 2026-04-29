@@ -311,10 +311,14 @@ export const ProjectParallax: React.FC = () => {
 
               {/* Section Droite - Image (55%) */}
               <div className="w-[55%] flex items-center justify-center p-4">
-                {project.id === '3' || project.id === '5' ? (
+                {project.id === '3' || project.id === '5' || project.id === '7' ? (
                   <div
                     className={`w-full h-full rounded-3xl overflow-hidden p-4 ${
-                      project.id === '5' ? 'bg-[#0b0b0b]' : 'bg-white'
+                      project.id === '5'
+                        ? 'bg-[#0b0b0b]'
+                        : project.id === '7'
+                          ? 'bg-gradient-to-br from-[#fafbff] to-[#eef2fb]'
+                          : 'bg-white'
                     }`}
                   >
                     <div className="relative w-full h-full">

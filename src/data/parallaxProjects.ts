@@ -70,6 +70,18 @@ export const parallaxProjects: ParallaxProject[] = [
       { url: '/eugeniagram.mp4', label: 'Voir la démo vidéo' },
     ],
   },
+  {
+    id: '7',
+    title: 'Hackaton Mirakl',
+    description:
+      'Projet réalisé lors d’un hackathon organisé par Eugénia School autour d’un challenge Mirakl. Avec mon équipe, nous avons conçu une solution d’automatisation mêlant scraping, enrichissement de leads, génération d’emails par IA et séquençage outbound.\n\nRésultat : 1ers de notre use case, 2es au classement général, avec à la clé une API OpenAI d’une valeur de 5 000 €.',
+    imageSrc: '/mirakl-hackathon.png',
+    color: '#D5F0EA',
+    link: [
+      { url: 'https://mirakl.vercel.app', label: 'Voir le dashboard' },
+      { url: 'https://mirakl-c2-pitch-deck.vercel.app/s/1', label: 'Voir la présentation' },
+    ],
+  },
 ];
 
 

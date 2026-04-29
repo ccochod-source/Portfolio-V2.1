@@ -49,7 +49,11 @@ export default function ProjectsPage() {
                   {/* Image */}
                   <div
                     className={`relative w-full h-48 md:h-56 overflow-hidden ${
-                      project.id === '5' ? 'bg-[#0b0b0b] p-3' : ''
+                      project.id === '5'
+                        ? 'bg-[#0b0b0b] p-3'
+                        : project.id === '7'
+                          ? 'bg-gradient-to-br from-[#fafbff] to-[#eef2fb] p-4'
+                          : ''
                     }`}
                   >
                     <div className="relative w-full h-full">
@@ -58,7 +62,9 @@ export default function ProjectsPage() {
                         alt={project.title}
                         fill
                         className={`transition-transform duration-300 ${
-                          project.id === '5' ? 'object-contain' : 'object-cover group-hover:scale-105'
+                          project.id === '5' || project.id === '7'
+                            ? 'object-contain'
+                            : 'object-cover group-hover:scale-105'
                         }`}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
