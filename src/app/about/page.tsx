@@ -24,12 +24,77 @@ export default function AboutPage() {
       title: 'Compétences techniques',
       content: (
         <>
-          <p className="mb-4">
-            Je maîtrise les outils data comme <strong>Google Sheets</strong>, <strong>Looker Studio</strong> et <strong>SQL</strong>, avec notamment un projet d'analyse géographique de l'accidentologie routière en France où j'ai mis en évidence un écart de 5,7 fois entre la métropole et l'outre-mer.
+          <p className="mb-5">
+            Je travaille aussi bien sur la chaîne complète&nbsp;: collecte et mise en forme des données, automatisation avec des connecteurs métier, produits front propres pour présenter ou opérationnaliser le résultat.
           </p>
-          <p className="mb-4">
-            Côté développement, je crée des landing pages et portfolios modernes avec <strong>Next.js</strong>, <strong>Tailwind</strong> et <strong>Cursor</strong>, en m'imposant régulièrement des contraintes de temps (par exemple réaliser une landing page complète en moins de 5 heures ou en une journée).
-          </p>
+
+          <div className="space-y-5">
+            <div>
+              <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
+                Data &amp; analyse
+              </h4>
+              <p className="mb-3">
+                Je construis des analyses fiables avec <strong>Google Sheets</strong>, des tableaux de bord lisibles dans <strong>Looker Studio</strong> et des requêtes en <strong>SQL</strong> pour explorer et croiser les données proprement. Exemple concret&nbsp;: une étude géographique sur l’accidentologie routière en France (données BAAC) où j’ai mis en évidence un écart de <strong>5,7 fois</strong> entre le taux observé outre-mer et en métropole.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
+                Automatisation &amp; intégrations
+              </h4>
+              <p className="mb-3">
+                Pour enchaîner les étapes sans bricolage fragile, je m’appuie sur des workflows no-code / low-code&nbsp;: orchestration bout-en-bout avec <strong>Make</strong>, scénarios avancés et webhooks avec <strong>n8n</strong>, automatisation SaaS avec <strong>Zapier</strong>, ainsi que des briques scraping et API (ex.&nbsp;<strong>Apify</strong>) quand il faut alimenter en continu des sources hétérogènes.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
+                IA &amp; agents
+              </h4>
+              <p className="mb-3">
+                Sur des cas orientés contenu ou enrichissement, je conçois des agents sur <strong>Dust</strong> (prompts, garde-fous, appels modèles) et j’intègre des modèles type <strong>OpenAI</strong> / <strong>Mistral</strong> dans des flux déjà structurés plutôt que du one-shot isolé.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
+                Développement web
+              </h4>
+              <p>
+                Je réalise des <strong>landing pages</strong> et des <strong>portfolios</strong> modernes avec <strong>Next.js</strong>, <strong>Tailwind CSS</strong> et <strong>Cursor</strong>, déployés notamment sur <strong>Vercel</strong>. Je m’impose souvent des contraintes de temps fortes (par exemple une landing complète en moins de cinq heures ou en une journée) pour rester efficace et itérer vite.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 pt-5 border-t border-sand/60">
+            <p className="text-sm text-text-light mb-3">Outils &amp; stack (aperçu)</p>
+            <ul className="flex flex-wrap gap-2" aria-label="Liste d’outils maîtrisés">
+              {[
+                'Google Sheets',
+                'Looker Studio',
+                'SQL',
+                'Make',
+                'n8n',
+                'Zapier',
+                'Dust',
+                'Apify',
+                'OpenAI',
+                'Mistral',
+                'Next.js',
+                'Tailwind CSS',
+                'Cursor',
+                'Vercel',
+                'Supabase',
+              ].map((tool) => (
+                <li
+                  key={tool}
+                  className="inline-flex items-center rounded-full border border-sand bg-cream/80 px-3 py-1 text-xs font-medium text-text-dark"
+                >
+                  {tool}
+                </li>
+              ))}
+            </ul>
+          </div>
         </>
       ),
     },
