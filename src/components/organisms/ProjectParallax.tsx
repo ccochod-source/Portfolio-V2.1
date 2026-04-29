@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import Link from 'next/link';
 import { parallaxProjects } from '@/data/parallaxProjects';
+import { getFlatProjectLinks } from '@/lib/projectResources';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -256,36 +257,16 @@ export const ProjectParallax: React.FC = () => {
                         →
                       </span>
                     </Link>
-                  ) : project.link ? (
+                  ) : (
                     <>
-                      {typeof project.link === 'string' ? (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-base font-medium text-[#1a1a1a] relative group"
-                          style={{
-                            textDecoration: 'none',
-                            fontFamily: 'system-ui, -apple-system, sans-serif',
-                          }}
-                        >
-                          <span className="relative">
-                            See more
-                            <span
-                              className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1a1a1a] transition-all duration-300 group-hover:w-full"
-                            />
-                          </span>
-                          <span className="transition-transform duration-300 group-hover:translate-x-1">
-                            →
-                          </span>
-                        </a>
-                      ) : (
-                        project.link.map((linkItem, index) => (
+                      {getFlatProjectLinks(project).map((item, linkIndex) => {
+                        const external = /^https?:\/\//i.test(item.url);
+                        return (
                           <a
-                            key={index}
-                            href={linkItem.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            key={`${item.url}-${linkIndex}`}
+                            href={item.url}
+                            target={external ? '_blank' : undefined}
+                            rel={external ? 'noopener noreferrer' : undefined}
                             className="inline-flex items-center gap-2 text-base font-medium text-[#1a1a1a] relative group"
                             style={{
                               textDecoration: 'none',
@@ -293,19 +274,32 @@ export const ProjectParallax: React.FC = () => {
                             }}
                           >
                             <span className="relative">
-                              {linkItem.label}
+                              {item.label}
                               <span
                                 className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1a1a1a] transition-all duration-300 group-hover:w-full"
                               />
                             </span>
-                            <span className="transition-transform duration-300 group-hover:translate-x-1">
-                              →
-                            </span>
+                            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                           </a>
-                        ))
-                      )}
+                        );
+                      })}
+                      {project.slug ? (
+                        <Link
+                          href={`/projects/${project.slug}`}
+                          className="inline-flex items-center gap-2 text-base font-semibold text-[#1a1a1a] relative group mt-1"
+                          style={{
+                            textDecoration: 'none',
+                            fontFamily: 'system-ui, -apple-system, sans-serif',
+                          }}
+                        >
+                          <span className="relative border-b-2 border-transparent group-hover:border-[#1a1a1a] transition-colors">
+                            Fiche projet complète
+                          </span>
+                          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </Link>
+                      ) : null}
                     </>
-                  ) : null}
+                  )}
                 </div>
               </div>
 

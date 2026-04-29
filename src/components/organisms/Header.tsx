@@ -36,7 +36,7 @@ export const Header: React.FC = () => {
           <Link
             href="/projects"
             className={`text-base font-medium transition-colors duration-300 ${
-              pathname === '/projects'
+              pathname?.startsWith('/projects')
                 ? 'text-accent-dark'
                 : 'text-text hover:text-accent-dark'
             }`}

@@ -9,6 +9,7 @@ import { Footer } from '@/components/organisms/Footer';
 import { Text } from '@/components/atoms/Text';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { allProjects } from '@/data/allProjects';
+import { getFlatProjectLinks } from '@/lib/projectResources';
 
 export default function ProjectsPage() {
   return (
@@ -76,44 +77,43 @@ export default function ProjectsPage() {
                     <Text variant="h4" className="text-text-dark mb-3">
                       {project.title}
                     </Text>
-                    <Text variant="body-sm" className="text-text flex-1 mb-4 line-clamp-4">
-                      {project.description.replace(/\n/g, ' ')}
+                    <Text
+                      variant="body-sm"
+                      className="text-text flex-1 mb-4 line-clamp-4 leading-relaxed"
+                    >
+                      {project.description}
                     </Text>
 
-                    {/* Liens */}
+                    {/* Liens : fiche interne + externes */}
                     <div className="flex flex-col gap-2 mt-auto">
-                      {project.link ? (
-                        typeof project.link === 'string' ? (
+                      {project.slug ? (
+                        <Link
+                          href={`/projects/${project.slug}`}
+                          className="inline-flex items-center gap-2 text-sm font-semibold text-accent-dark hover:text-accent transition-colors duration-300 group/pg"
+                        >
+                          <span>Fiche projet complète</span>
+                          <span className="transition-transform duration-300 group-hover/pg:translate-x-1">
+                            →
+                          </span>
+                        </Link>
+                      ) : null}
+                      {getFlatProjectLinks(project).map((linkItem, linkIndex) => {
+                        const isHttp = /^https?:\/\//i.test(linkItem.url);
+                        return (
                           <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            key={`${linkItem.url}-${linkIndex}`}
+                            href={linkItem.url}
+                            target={isHttp ? '_blank' : undefined}
+                            rel={isHttp ? 'noopener noreferrer' : undefined}
                             className="inline-flex items-center gap-2 text-sm font-medium text-text-dark hover:text-accent-dark transition-colors duration-300 group/link"
                           >
-                            <span>Voir le projet</span>
+                            <span>{linkItem.label}</span>
                             <span className="transition-transform duration-300 group-hover/link:translate-x-1">
                               →
                             </span>
                           </a>
-                        ) : (
-                          <div className="flex flex-col gap-2">
-                            {project.link.map((linkItem, linkIndex) => (
-                              <a
-                                key={linkIndex}
-                                href={linkItem.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 text-sm font-medium text-text-dark hover:text-accent-dark transition-colors duration-300 group/link"
-                              >
-                                <span>{linkItem.label}</span>
-                                <span className="transition-transform duration-300 group-hover/link:translate-x-1">
-                                  →
-                                </span>
-                              </a>
-                            ))}
-                          </div>
-                        )
-                      ) : null}
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
