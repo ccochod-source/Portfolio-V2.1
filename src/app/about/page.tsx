@@ -61,7 +61,10 @@ export default function AboutPage() {
                 Développement web
               </h4>
               <p>
-                Je réalise des <strong>landing pages</strong> et des <strong>portfolios</strong> modernes avec <strong>Next.js</strong>, <strong>Tailwind CSS</strong> et <strong>Cursor</strong>, déployés notamment sur <strong>Vercel</strong>. Je m’impose souvent des contraintes de temps fortes (par exemple une landing complète en moins de cinq heures ou en une journée) pour rester efficace et itérer vite.
+                Je ne m’arrête pas aux vitrines&nbsp;: <strong>landing pages</strong>, <strong>portfolios</strong>, mais aussi des <strong>sites web orientés B2B</strong> (message clair, parcours prospect, offre lisible) et des <strong>dashboards B2B</strong> où l’on suit en un coup d’œil les indicateurs qui comptent — campagnes, performance, signaux opérationnels — sans noyer l’écran de chiffres.
+              </p>
+              <p className="mt-3">
+                Stack de prédilection&nbsp;: <strong>Next.js</strong>, <strong>Tailwind CSS</strong> et <strong>Cursor</strong>, avec des mises en ligne sur <strong>Vercel</strong> pour garder un cycle court du prototype à la prod. Je cultive la vitesse sous contrainte&nbsp;: <strong>landing complète en moins de cinq heures</strong> ou <strong>livraison ambitieuse sur une journée</strong>, pour forcer la clarté, l’itération et une exécution sans fioritures.
               </p>
             </div>
           </div>
