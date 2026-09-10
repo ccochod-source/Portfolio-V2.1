@@ -96,14 +96,13 @@ export const Footer: React.FC = () => {
         {/* Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
           <Text variant="caption" className="text-text-light">
-            © {currentYear} Portfolio. Tous droits réservés.
+            © {currentYear} Clément Cochod
           </Text>
           <Text variant="caption" className="text-text-light">
-            Conçu avec élégance et précision
+            Développement · Data · IA
           </Text>
         </div>
       </div>
     </motion.footer>
   );
 };
-

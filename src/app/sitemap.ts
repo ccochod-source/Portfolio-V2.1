@@ -1,13 +1,26 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-v2-1-xi.vercel.app';
+
   return [
     {
-      url: 'https://portfolio.example.com',
+      url: siteUrl,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
     },
+    {
+      url: `${siteUrl}/projects`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
   ];
 }
-

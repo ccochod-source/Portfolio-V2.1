@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#dfe9e2"/>
+  <circle cx="940" cy="400" r="255" fill="#173f34"/>
+  <circle cx="940" cy="400" r="82" fill="#ff6b4a"/>
+  <text x="75" y="110" fill="#173f34" font-family="Arial, sans-serif" font-size="26" font-weight="700">SPORT · DATA · ARCHITECTURE</text>
+  <text x="75" y="290" fill="#111111" font-family="Arial, sans-serif" font-size="100" font-weight="700">PING</text>
+  <text x="75" y="390" fill="#111111" font-family="Arial, sans-serif" font-size="100" font-weight="700">PANG</text>
+  <text x="75" y="500" fill="#173f34" font-family="Arial, sans-serif" font-size="30">TRAINING + RANKING MONDIAL</text>
+  <text x="75" y="685" fill="#173f34" font-family="Arial, sans-serif" font-size="24" font-weight="700">SUPABASE · GLICKO-2 · IMPORTS · SÉCURITÉ</text>
+</svg>

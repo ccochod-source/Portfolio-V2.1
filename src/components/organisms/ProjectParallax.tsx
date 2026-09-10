@@ -11,6 +11,8 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const featuredProjects = parallaxProjects.filter((project) => project.featured !== false);
+
 export const ProjectParallax: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -169,7 +171,7 @@ export const ProjectParallax: React.FC = () => {
   }
 
   // Calculer la hauteur totale du conteneur (chaque carte = 100vh)
-  const totalHeight = parallaxProjects.length * 100;
+  const totalHeight = featuredProjects.length * 100;
 
   return (
     <section
@@ -180,7 +182,7 @@ export const ProjectParallax: React.FC = () => {
         backgroundColor: '#FDFCF0',
       }}
     >
-      {parallaxProjects.map((project, index) => (
+      {featuredProjects.map((project, index) => (
         <div
           key={project.id}
           ref={(el) => {
@@ -198,15 +200,20 @@ export const ProjectParallax: React.FC = () => {
             ref={(el) => {
               cardRefs.current[index] = el;
             }}
-            className="w-[90vw] max-w-[1200px] h-[75vh] rounded-[40px] shadow-xl flex flex-col overflow-hidden"
+            className="w-[92vw] max-w-[1200px] h-[82vh] md:h-[75vh] rounded-[28px] md:rounded-[40px] shadow-xl flex flex-col overflow-hidden"
             style={{
               background: project.color || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
             }}
           >
             {/* Titre centré en haut */}
-            <div className="flex justify-center items-center pt-8 pb-6">
+            <div className="flex flex-col justify-center items-center px-5 pt-5 pb-3 md:pt-8 md:pb-6">
+              {project.category ? (
+                <p className="mb-2 text-[11px] md:text-xs font-semibold uppercase tracking-[0.18em] text-black/55 text-center">
+                  {project.category}
+                </p>
+              ) : null}
               <h2
-                className="text-3xl md:text-4xl font-bold text-center"
+                className="text-2xl md:text-4xl font-bold text-center"
                 style={{
                   color: '#1a1a1a',
                   fontFamily: 'system-ui, -apple-system, sans-serif',
@@ -217,13 +224,13 @@ export const ProjectParallax: React.FC = () => {
             </div>
 
             {/* Conteneur de contenu (Bas) - Flex Row */}
-            <div className="flex-1 flex flex-row px-8 pb-8 gap-8">
+            <div className="flex-1 min-h-0 flex flex-col md:flex-row px-5 pb-5 md:px-8 md:pb-8 gap-4 md:gap-8">
               {/* Section Gauche - Texte (45%) */}
-              <div className="w-[45%] flex flex-col">
+              <div className="w-full md:w-[45%] flex flex-col min-h-0">
                 {/* Description centrée */}
                 <div className="flex-1 flex items-center justify-center">
                   <p
-                    className="text-lg leading-relaxed whitespace-pre-line text-center"
+                    className="text-sm md:text-lg leading-relaxed whitespace-pre-line text-center"
                     style={{
                       color: 'rgba(0, 0, 0, 0.8)',
                       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif",
@@ -234,8 +241,8 @@ export const ProjectParallax: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Lien See more en bas centré */}
-                <div className="mt-6 flex flex-col gap-3 items-center">
+                {/* Liens du projet */}
+                <div className="mt-3 md:mt-6 flex flex-col gap-3 items-center">
                   {project.id === '1' ? (
                     // Lien spécial pour "A propos de moi" vers la page /about
                     <Link
@@ -270,7 +277,7 @@ export const ProjectParallax: React.FC = () => {
                           }}
                         >
                           <span className="relative">
-                            See more
+                            Voir le projet
                             <span
                               className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1a1a1a] transition-all duration-300 group-hover:w-full"
                             />
@@ -310,7 +317,7 @@ export const ProjectParallax: React.FC = () => {
               </div>
 
               {/* Section Droite - Image (55%) */}
-              <div className="w-[55%] flex items-center justify-center p-4">
+              <div className="w-full md:w-[55%] h-[38%] md:h-auto flex items-center justify-center md:p-4">
                 <div className="relative w-full h-full rounded-3xl overflow-hidden">
                   <Image
                     src={project.imageSrc}
@@ -319,7 +326,7 @@ export const ProjectParallax: React.FC = () => {
                     className="rounded-3xl"
                     style={{
                       objectFit: 'cover',
-                      objectPosition: project.id === '5' ? '25% center' : 'center 20%',
+                      objectPosition: project.imagePosition || 'center center',
                     }}
                     sizes="(max-width: 768px) 100vw, 55vw"
                     priority={index === 0}

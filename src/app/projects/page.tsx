@@ -25,10 +25,10 @@ export default function ProjectsPage() {
           {/* Hero Section */}
           <motion.div variants={fadeInUp} className="text-center space-y-4">
             <Text variant="h1" className="text-accent-dark">
-              Mes Projets
+              Mes projets
             </Text>
             <Text variant="body" className="text-text-light max-w-2xl mx-auto">
-              Découvrez tous mes projets et réalisations
+              Applications métiers, sites clients, data et produits numériques : une sélection de travaux livrés ou explorés sérieusement.
             </Text>
           </motion.div>
 
@@ -53,12 +53,18 @@ export default function ProjectsPage() {
                       alt={project.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      style={{ objectPosition: project.imagePosition || 'center center' }}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
 
                   {/* Contenu */}
                   <div className="flex-1 p-6 flex flex-col">
+                    {project.category ? (
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-text-light">
+                        {project.category}
+                      </p>
+                    ) : null}
                     <Text variant="h4" className="text-text-dark mb-3">
                       {project.title}
                     </Text>
@@ -126,4 +132,3 @@ export default function ProjectsPage() {
     </div>
   );
 }
-

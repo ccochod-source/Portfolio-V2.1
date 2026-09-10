@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#e9e3d5"/>
+  <circle cx="1010" cy="-40" r="330" fill="#c9b27d" opacity=".45"/>
+  <text x="80" y="105" fill="#5e6841" font-family="Arial, sans-serif" font-size="26" font-weight="700">SITE CLIENT · AURALIFE.FR</text>
+  <text x="80" y="310" fill="#20251d" font-family="Georgia, serif" font-size="126">Auralife</text>
+  <line x1="80" y1="365" x2="1120" y2="365" stroke="#5e6841" stroke-width="3"/>
+  <text x="80" y="445" fill="#20251d" font-family="Arial, sans-serif" font-size="34">SITE · BLOG · ADMINISTRATION</text>
+  <text x="80" y="505" fill="#20251d" font-family="Arial, sans-serif" font-size="34">AVIS · EMAILS AUTOMATIQUES</text>
+  <text x="80" y="690" fill="#5e6841" font-family="Arial, sans-serif" font-size="24" font-weight="700">CONCEPTION, DÉVELOPPEMENT ET MISE EN LIGNE</text>
+</svg>

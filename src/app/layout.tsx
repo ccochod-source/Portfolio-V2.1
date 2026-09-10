@@ -3,16 +3,16 @@ import './globals.css';
 import { LenisProvider } from '@/components/providers/LenisProvider';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio.example.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-v2-1-xi.vercel.app'),
   title: {
-    default: 'Portfolio - Solaire & Calme',
-    template: '%s | Portfolio',
+    default: 'Clément Cochod — Développement, Data & IA',
+    template: '%s | Clément Cochod',
   },
-  description: 'Portfolio créatif et élégant - Vitrine de propreté technique et d\'élégance visuelle',
-  keywords: ['portfolio', 'développeur', 'creative developer', 'web design', 'frontend', 'react', 'next.js'],
-  authors: [{ name: 'Portfolio' }],
-  creator: 'Portfolio',
-  publisher: 'Portfolio',
+  description: "Portfolio de Clément Cochod : applications métiers, projets data, automatisations et produits numériques intégrant l'IA.",
+  keywords: ['Clément Cochod', 'applications métiers', 'data', 'intelligence artificielle', 'Next.js', 'Supabase', 'portfolio'],
+  authors: [{ name: 'Clément Cochod' }],
+  creator: 'Clément Cochod',
+  publisher: 'Clément Cochod',
   formatDetection: {
     email: false,
     address: false,
@@ -22,23 +22,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: '/',
-    siteName: 'Portfolio - Solaire & Calme',
-    title: 'Portfolio - Solaire & Calme',
-    description: 'Portfolio créatif et élégant - Vitrine de propreté technique et d\'élégance visuelle',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Portfolio - Solaire & Calme',
-      },
-    ],
+    siteName: 'Clément Cochod — Portfolio',
+    title: 'Clément Cochod — Développement, Data & IA',
+    description: "Applications métiers, projets data, automatisations et produits numériques intégrant l'IA.",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Portfolio - Solaire & Calme',
-    description: 'Portfolio créatif et élégant - Vitrine de propreté technique et d\'élégance visuelle',
-    images: ['/og-image.jpg'],
+    card: 'summary',
+    title: 'Clément Cochod — Développement, Data & IA',
+    description: "Applications métiers, projets data, automatisations et produits numériques intégrant l'IA.",
   },
   robots: {
     index: true,
@@ -63,22 +54,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="lenis lenis-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body>
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );
 }
-

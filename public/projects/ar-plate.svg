@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#efe5dc"/>
+  <text x="70" y="105" fill="#c4492d" font-family="Arial, sans-serif" font-size="25" font-weight="700">FOODTECH · MARKET VALIDATION</text>
+  <text x="70" y="300" fill="#111111" font-family="Arial, sans-serif" font-size="118" font-weight="700">AR PLATE</text>
+  <text x="70" y="395" fill="#111111" font-family="Arial, sans-serif" font-size="34">STUDIO PHOTO IA POUR RESTAURANTS</text>
+  <line x1="70" y1="455" x2="1130" y2="455" stroke="#c9a795" stroke-width="3"/>
+  <g font-family="Arial, sans-serif">
+    <text x="70" y="570" fill="#c4492d" font-size="56" font-weight="700">8</text><text x="120" y="570" fill="#111111" font-size="24">ENTRETIENS</text>
+    <text x="430" y="570" fill="#c4492d" font-size="56" font-weight="700">4</text><text x="480" y="570" fill="#111111" font-size="24">HYPOTHÈSES</text>
+    <text x="790" y="570" fill="#c4492d" font-size="56" font-weight="700">5</text><text x="840" y="570" fill="#111111" font-size="24">RISQUES CLASSÉS</text>
+  </g>
+  <text x="70" y="690" fill="#111111" font-family="Arial, sans-serif" font-size="24" font-weight="700">ENTRETIENS · PRICING · OBJECTIONS · PLAN PILOTE</text>
+</svg>

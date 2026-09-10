@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f4efcf"/>
+  <rect x="760" y="130" width="330" height="330" rx="48" fill="#f9d968"/>
+  <path d="M825 305 L925 220 L1025 305" fill="none" stroke="#214d3a" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="870" y="300" width="110" height="95" fill="#fffbed"/>
+  <text x="70" y="115" fill="#214d3a" font-family="Arial, sans-serif" font-size="26" font-weight="700">PRODUIT · ORGANISATION FAMILIALE</text>
+  <text x="70" y="335" fill="#111111" font-family="Arial, sans-serif" font-size="150" font-weight="700">OMI</text>
+  <text x="70" y="435" fill="#214d3a" font-family="Arial, sans-serif" font-size="32">ALLÉGER LA MAISON.</text>
+  <text x="70" y="655" fill="#214d3a" font-family="Arial, sans-serif" font-size="24" font-weight="700">MISSIONS · PLANNING · MESSAGES · RAPPELS</text>
+</svg>
