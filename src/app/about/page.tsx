@@ -15,7 +15,7 @@ export default function AboutPage() {
       content: (
         <>
           <p className="mb-4">
-            Étudiant en 1ère année Business Data & IA à Eugenia School Paris, âgé de 19 ans, je construis un profil hybride entre data, développement web et business. J'ai grandi à Annecy, en Haute-Savoie, et j'ai déménagé à Paris en septembre 2025 pour suivre ce cursus orienté Data, IA et stratégie d'entreprise.
+            Étudiant en Bachelor Business, Data & IA à Eugenia School Paris, je construis un profil hybride entre développement, data et compréhension métier. J'ai grandi à Annecy, en Haute-Savoie, avant de rejoindre Paris pour suivre ce cursus orienté IA et stratégie d'entreprise.
           </p>
         </>
       ),
@@ -106,10 +106,10 @@ export default function AboutPage() {
       content: (
         <>
           <p className="mb-4">
-            J'ai travaillé sur une application type Instagram pour mon école, permettant aux étudiants de publier leurs projets et de valoriser leurs compétences, ce qui m'a confronté à des problématiques concrètes comme l'authentification, la réinitialisation de mot de passe et l'expérience utilisateur.
+            Lors d'un stage de huit semaines à la <strong>Brasserie de Tahiti</strong>, j'ai livré cinq applications métiers : BI et recherche documentaire, gestion des investissements, suivi de flotte, sécurité terrain et pilotage des coûts informatiques. Ce travail m'a amené à gérer des données historiques, des droits utilisateurs, des exports, des contrôles et des tests avec les équipes.
           </p>
           <p>
-            En parallèle, je mène un défi personnel de création d'un projet par semaine, souvent partagé sur LinkedIn, pour progresser en continu et montrer ma capacité à livrer vite avec un bon niveau de qualité.
+            Je développe aussi des projets clients comme <strong>Auralife</strong>, un site administrable avec automatisations, et une application privée d'aide à l'écriture par la voix. D'autres projets — PayFit, Sephora Intel, Mirakl, Ping Pang et Eugeniagram — m'ont permis d'approfondir les agents IA, les pipelines de données, Supabase et les produits web.
           </p>
         </>
       ),
@@ -200,4 +200,3 @@ export default function AboutPage() {
     </div>
   );
 }
-

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#e9e3dd"/>
+  <rect x="70" y="65" width="1060" height="670" fill="none" stroke="#7d3f4b" stroke-width="3"/>
+  <text x="105" y="125" fill="#7d3f4b" font-family="Arial, sans-serif" font-size="25" font-weight="700">APPLICATION CLIENT · IA ÉDITORIALE</text>
+  <text x="105" y="300" fill="#201b1c" font-family="Georgia, serif" font-size="108">Écrire son livre</text>
+  <text x="105" y="390" fill="#201b1c" font-family="Arial, sans-serif" font-size="31">DE LA VOIX AU MANUSCRIT</text>
+  <g fill="#7d3f4b" font-family="Arial, sans-serif" font-size="25" font-weight="700">
+    <text x="105" y="510">AUDIO</text><text x="320" y="510">TRANSCRIPTION</text><text x="655" y="510">CORRECTION</text><text x="920" y="510">EXPORT</text>
+  </g>
+  <line x1="105" y1="545" x2="1095" y2="545" stroke="#b9a8a9"/>
+  <text x="105" y="650" fill="#201b1c" font-family="Arial, sans-serif" font-size="27">ASSISTANT CONTEXTUALISÉ · FACT-CHECK · DOCX</text>
+</svg>

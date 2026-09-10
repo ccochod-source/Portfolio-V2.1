@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#ece8df"/>
+  <text x="70" y="105" fill="#ff5a36" font-family="Arial, sans-serif" font-size="25" font-weight="700">SAAS · ANALYSE BUSINESS PAR IA</text>
+  <text x="70" y="300" fill="#111111" font-family="Arial, sans-serif" font-size="126" font-weight="700">BIZROAST</text>
+  <line x1="70" y1="350" x2="1130" y2="350" stroke="#111111" stroke-width="3"/>
+  <text x="70" y="445" fill="#111111" font-family="Arial, sans-serif" font-size="35">RISQUES · MARCHÉ · MONÉTISATION</text>
+  <text x="70" y="505" fill="#111111" font-family="Arial, sans-serif" font-size="35">GO / NO-GO · PLAN MVP · MENTOR IA</text>
+  <rect x="70" y="620" width="360" height="58" fill="#111111"/>
+  <text x="95" y="658" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="700">UN RAPPORT, SANS BULLSHIT.</text>
+</svg>

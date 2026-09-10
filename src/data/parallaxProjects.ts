@@ -10,6 +10,9 @@ export interface ParallaxProject {
   /** Texte détaillé pour la page « Tous les projets » (optionnel) */
   longDescription?: string;
   imageSrc: string;
+  category?: string;
+  featured?: boolean;
+  imagePosition?: string;
   color?: string;
   videoUrl?: string;
   link?: string | Array<{ url: string; label: string }>;
@@ -33,6 +36,89 @@ export const parallaxProjects: ParallaxProject[] = [
     color: '#FFE5D9',
   },
   {
+    id: 'tahiti',
+    title: 'Brasserie de Tahiti',
+    category: 'Stage · 5 applications métiers',
+    featured: true,
+    description:
+      "Huit semaines pour livrer cinq outils : plateforme BI et RAG documentaire, gestion des investissements, suivi de flotte et carburant, sécurité terrain et pilotage des coûts de la DSI.",
+    longDescription:
+      "Stage de huit semaines consacré à la conception et au déploiement de cinq applications métiers pour la Brasserie de Tahiti.\n\nRéalisations\n- BDT Data Hub & Omni : couche sémantique, environ 50 corrections de modèles, 19 tableaux de bord et recherche RAG sur plus de 16 000 pages documentaires.\n- GestioPro : gestion des investissements avec 9 statuts, 7 rôles, budgets multi-devises, plus de 200 contrôles et une dizaine d’exports.\n- Flotte & carburant : remplacement de 26 feuilles Excel, suivi de 150 véhicules et reprise de dix ans d’historique, dont 22 000 entrées carburant.\n- HSE : six types de permis de travail et 17 formulaires dynamiques pour les équipes terrain.\n- Pilotage DSI : intégration ITSM, extraction par IA des contrats PDF et documentation interne.\n\nRôle\nCompréhension des procédures, modélisation, développement, reprise des données, gestion des droits, tests utilisateurs et déploiement.",
+    imageSrc: '/projects/tahiti.svg',
+    color: '#EEE8DE',
+  },
+  {
+    id: 'auralife',
+    title: 'Auralife',
+    category: 'Site client · Administration & automatisation',
+    featured: true,
+    description:
+      "Site complet pour une activité d'accompagnement : services, blog administrable, témoignages, messages, réglages centralisés et relances automatiques après rendez-vous.",
+    imageSrc: '/projects/auralife.svg',
+    color: '#E7E2D3',
+    link: [{ url: 'https://auralife.fr', label: 'Visiter Auralife' }],
+  },
+  {
+    id: 'lorene',
+    title: 'Écrire son livre',
+    category: 'Application client · IA éditoriale',
+    featured: true,
+    description:
+      "Application privée d'aide à l'écriture par la voix : enregistrement, transcription, structuration du manuscrit, corrections, vérification factuelle, assistant contextualisé et export Word.",
+    imageSrc: '/projects/lorene.svg',
+    color: '#E8E1DB',
+  },
+  {
+    id: 'ping-pang',
+    title: 'Ping Pang',
+    category: 'Architecture data · Sport',
+    featured: true,
+    description:
+      "Écosystème de suivi d'entraînement et de classement pour le tennis de table : Supabase, sécurité des données, imports multi-sources et moteur Glicko-2 testé.",
+    imageSrc: '/projects/ping-pang.svg',
+    color: '#DDE7DF',
+  },
+  {
+    id: 'galaad',
+    title: 'Bizroast',
+    category: 'SaaS · Analyse business par IA',
+    featured: false,
+    description:
+      "Analyse critique d'idées business : marché, risques, modèle économique, plan MVP, décision Go/No-Go, rapport structuré et mentor IA contextualisé.",
+    imageSrc: '/projects/galaad.svg',
+    color: '#E8E4DC',
+  },
+  {
+    id: 'coplat',
+    title: 'Coplat',
+    category: 'SaaS restauration · Business & data',
+    featured: false,
+    description:
+      "Plateforme de pilotage pour restaurants : photos améliorées par IA, menu QR analytique, suivi de réputation, copilote de profitabilité et scénarios financiers.",
+    imageSrc: '/projects/coplat.svg',
+    color: '#E3E7EC',
+  },
+  {
+    id: 'omi',
+    title: 'Omi',
+    category: 'Produit · Organisation familiale',
+    featured: false,
+    description:
+      "Application imaginée pour répartir les tâches familiales, organiser les plannings, préparer les repas et envoyer des rappels, avec travail sur l'acquisition et la fidélisation.",
+    imageSrc: '/projects/omi.svg',
+    color: '#F2EDCF',
+  },
+  {
+    id: 'ar-plate',
+    title: 'AR Plate',
+    category: 'Étude de marché · FoodTech',
+    featured: false,
+    description:
+      "Validation marché d'un service d'amélioration de photos culinaires par IA : huit entretiens, test de quatre hypothèses, objections, sensibilité au prix et plan pilote.",
+    imageSrc: '/projects/ar-plate.svg',
+    color: '#EFE5DC',
+  },
+  {
     id: '2',
     title: 'Beitea',
     description:
@@ -40,6 +126,7 @@ export const parallaxProjects: ParallaxProject[] = [
     longDescription:
       'Stratégie marketing terrain pour un point de vente à fort flux touristique : monter la fréquence et le panier sans alourdir le parcours d’achat, via leviers communautaires et ludiques.\n\nContexte\nBEITEA est positionné sur un axe à très forte affluence (Champs-Élysées) où la concurrence sur l’attention est forte : il faut créer des raisons de revenir et d’augmenter spontanément le ticket, pas seulement des promos génériques.\n\nSolution\nConstruction d’un funnel adapté au lieu de vente (TOFU / MOFU / BOFU) avec une boisson « mystère » pensée comme contenu partageable au milieu du parcours, et un jeu de type grattage après un seuil de panier pour inciter à dépasser un ticket cible (ex. +10 €). Le deck pitch (slides PNG ci-dessous) reprend cette narrative sous forme de présentation prête pour la soutenance — sans dépendre d’un lien Canva externe.\n\nRôle\nDéfinition des messages, des hypothèses testables et des indicateurs à suivre (panier, retour visite, engagement social possible) ; alignement entre concept marketing et faisabilité opérationnelle en point de vente.\n\nImpact\nLivrable prêt pour expérimenter et mesurer sur le terrain : grille d’AB testing lorsque les volumes le permettent, lecture des premiers signaux comportementaux plutôt que des promesses sans test.\n\nPoints clés\n- Funnel pensé pour du retail à fort passage\n- Levier social (mystère / contenu) + levier incitatif (seuil de panier)\n- Méthode : hypothèse → test → lecture des données\n- Deck matcha / café-beauté intégré à la page projet (bouton slideshow)\n\nCe que j’en retiens\n- Lier chaque idée à une métrique possible en magasin\n- Éviter les campagnes décoratives sans lien avec le panier\n- Itérer avec de petits tests plutôt qu’un gros bloc non mesuré',
     imageSrc: '/beitea-capture.png',
+    featured: false,
     color: '#A8D5BA',
     slug: 'beitea',
     slideshowSrcs: beiteaSlideshowUrls(),
@@ -73,6 +160,7 @@ export const parallaxProjects: ParallaxProject[] = [
     longDescription:
       "Programme « agence » de contenu pour l’école : produire en continu sans diluer la voix de marque, en combinant générateurs IA et relecture humaine sur les zones sensibles.\n\nContexte\nBesoin institutionnel de volumes de contenus homogènes (posts, fiches, mails) sans embaucher une agence externe : il faut cadre, prompts, et process de validation interne.\n\nSolution\nAteliers de définition du tone of voice ; bibliothèque de prompts par type de livrable ; packs visuels cohérents retracés dans les slides PNG ci-dessous (présentation intégrée au site, sans lien Canva externe) ; document de référence partagé ; organisation en cellule projet (direction, technique, marketing, design) pour livrer un package complet.\n\nRôle\nContribution à la définition des consignes créatives, aux prompts, à la coordination des rôles et à la cohérence des livrables finaux.\n\nImpact\nUne chaîne reproductible : moins d’improvisation, plus de qualité par itération ; livrables utilisables tels quels pour communiquer sur l’école.\n\nPoints clés\n- Ton de voice explicite avant de scaler le volume\n- Prompts documentés (pas seulement dans la tête)\n- Séparation claire : contenu sensible vs contenu recyclable\n- Narration visuelle disponible en modale (slides du deck London / rouge beige)\n\nCe que j’en retiens\n- L’outil ne remplace pas le cadrage éditorial\n- La qualité vient du process avant le modèle\n- Une mini-structure forcée évite les zones grises entre rôles",
     imageSrc: '/neogen-ia.png',
+    featured: false,
     color: '#D4C4B0',
     slug: 'neogen-ia',
     slideshowSrcs: neogenIaSlideshowUrls(),

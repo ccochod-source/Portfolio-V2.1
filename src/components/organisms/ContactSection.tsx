@@ -21,7 +21,7 @@ export const ContactSection: React.FC = () => {
               Contactez-moi
             </Text>
             <Text variant="body" className="text-text-light max-w-2xl mx-auto">
-              Vous avez un projet en tête ou une question ? N'hésitez pas à me contacter.
+              Vous avez un besoin concret, une idée d'application ou des données à mieux exploiter ? Écrivez-moi.
             </Text>
           </motion.div>
 
@@ -29,10 +29,10 @@ export const ContactSection: React.FC = () => {
             variants={fadeInUp}
             className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-sand/50 shadow-sm"
           >
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
               {/* Email */}
               <motion.a
-                href="mailto:ccochod@eugeniaschool.com"
+                href="mailto:cochod.elevate@icloud.com"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex flex-col items-center gap-3 group"
@@ -57,7 +57,37 @@ export const ContactSection: React.FC = () => {
                   Email
                 </Text>
                 <Text variant="caption" className="text-accent-dark">
-                  ccochod@eugeniaschool.com
+                  cochod.elevate@icloud.com
+                </Text>
+              </motion.a>
+
+              {/* Téléphone */}
+              <motion.a
+                href="tel:+33743700596"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex flex-col items-center gap-3 group"
+              >
+                <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors duration-300">
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-accent-dark"
+                  >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.33 1.84.56 2.8.69A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                </div>
+                <Text variant="body-sm" className="text-text-dark font-medium">
+                  Téléphone
+                </Text>
+                <Text variant="caption" className="text-accent-dark">
+                  07 43 70 05 96
                 </Text>
               </motion.a>
 
