@@ -103,7 +103,13 @@ export default async function ProjectDetailPage({ params }: Props) {
           <Text variant="h1" className="text-accent-dark mb-2">
             {project.title}
           </Text>
-          <p className="text-text-light text-sm mb-6">Résumé présent également sur la page d’accueil.</p>
+          {project.category ? (
+            <p className="text-text-light text-xs font-semibold uppercase tracking-[0.14em] mb-6">
+              {project.category}
+            </p>
+          ) : (
+            <p className="text-text-light text-sm mb-6">Étude de cas</p>
+          )}
           <div className="text-text whitespace-pre-line leading-relaxed text-base md:text-lg">
             {project.longDescription ?? project.description}
           </div>

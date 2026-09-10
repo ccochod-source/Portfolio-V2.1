@@ -43,9 +43,10 @@ export const parallaxProjects: ParallaxProject[] = [
     description:
       "Huit semaines pour livrer cinq outils : plateforme BI et RAG documentaire, gestion des investissements, suivi de flotte et carburant, sécurité terrain et pilotage des coûts de la DSI.",
     longDescription:
-      "Stage de huit semaines consacré à la conception et au déploiement de cinq applications métiers pour la Brasserie de Tahiti.\n\nRéalisations\n- BDT Data Hub & Omni : couche sémantique, environ 50 corrections de modèles, 19 tableaux de bord et recherche RAG sur plus de 16 000 pages documentaires.\n- GestioPro : gestion des investissements avec 9 statuts, 7 rôles, budgets multi-devises, plus de 200 contrôles et une dizaine d’exports.\n- Flotte & carburant : remplacement de 26 feuilles Excel, suivi de 150 véhicules et reprise de dix ans d’historique, dont 22 000 entrées carburant.\n- HSE : six types de permis de travail et 17 formulaires dynamiques pour les équipes terrain.\n- Pilotage DSI : intégration ITSM, extraction par IA des contrats PDF et documentation interne.\n\nRôle\nCompréhension des procédures, modélisation, développement, reprise des données, gestion des droits, tests utilisateurs et déploiement.",
+      "Cinq applications métiers conçues pendant un stage de huit semaines à la Brasserie de Tahiti, avec un même objectif : remplacer des fichiers dispersés et des procédures difficiles à suivre par des outils utilisables au quotidien.\n\nContexte\nLes équipes travaillaient avec des sources hétérogènes : documents internes, historiques Excel, données financières et procédures terrain. Chaque application devait respecter les rôles métier, reprendre l’existant et rester compréhensible par des utilisateurs non techniques.\n\nRéalisations\n- BDT Data Hub & Omni : couche sémantique, environ 50 corrections de modèles, 19 tableaux de bord et recherche RAG sur plus de 16 000 pages documentaires.\n- GestioPro : gestion des investissements avec 9 statuts, 7 rôles, budgets multi-devises, plus de 200 contrôles et une dizaine d’exports.\n- Flotte & carburant : remplacement de 26 feuilles Excel, suivi de 150 véhicules et reprise de dix ans d’historique, dont 22 000 entrées carburant et environ 400 anomalies détectées.\n- HSE : six types de permis de travail et 17 formulaires dynamiques adaptés aux opérations terrain.\n- Pilotage DSI : intégration ITSM, extraction assistée par IA des contrats PDF et espace de documentation interne.\n\nRôle\nRecueil des besoins, modélisation des données, développement, reprise des historiques, gestion des droits, contrôles de cohérence, tests utilisateurs et préparation du déploiement.\n\nImpact\nCinq outils livrés sur des périmètres différents, avec une base plus centralisée pour consulter l’information, contrôler les saisies et suivre les opérations.\n\nCe que j’en retiens\n- Commencer par comprendre le processus réel avant de dessiner l’interface\n- Prévoir la reprise et la qualité des données dès le début\n- Tester les droits et les cas limites avec les utilisateurs concernés\n- Documenter suffisamment pour rendre l’outil durable après la livraison",
     imageSrc: '/projects/tahiti.svg',
     color: '#EEE8DE',
+    slug: 'brasserie-de-tahiti',
   },
   {
     id: 'auralife',
@@ -54,8 +55,11 @@ export const parallaxProjects: ParallaxProject[] = [
     featured: true,
     description:
       "Site complet pour une activité d'accompagnement : services, blog administrable, témoignages, messages, réglages centralisés et relances automatiques après rendez-vous.",
+    longDescription:
+      "Site public et espace d’administration conçus pour Auralife, une activité d’accompagnement qui devait pouvoir présenter son offre, publier du contenu et gérer les échanges sans dépendre d’un développeur pour chaque modification.\n\nContexte\nLe besoin dépassait une simple page vitrine : il fallait centraliser les services, les articles, les témoignages, les demandes reçues et les principaux réglages du site dans une interface cohérente.\n\nSolution\nCréation du site auralife.fr avec pages de présentation, blog administrable et parcours de contact. L’administration permet de gérer les articles, les témoignages, les messages et les réglages importants. Une automatisation envoie également une demande d’avis après un rendez-vous.\n\nRôle\nCadrage du besoin, organisation des contenus, conception des parcours public et administrateur, développement, automatisations et mise en ligne.\n\nRésultat\nUn site réellement en production, modifiable par la cliente et relié aux opérations qui suivent un rendez-vous.\n\nPoints clés\n- Site vitrine et outil d’administration dans le même projet\n- Gestion autonome du blog et des témoignages\n- Centralisation des messages et des réglages\n- Relance d’avis automatisée\n\nCe que j’en retiens\n- L’autonomie du client compte autant que l’apparence du site\n- Les contenus doivent être simples à mettre à jour\n- Une petite automatisation bien placée peut supprimer une tâche répétitive",
     imageSrc: '/projects/auralife.svg',
     color: '#E7E2D3',
+    slug: 'auralife',
     link: [{ url: 'https://auralife.fr', label: 'Visiter Auralife' }],
   },
   {
@@ -65,8 +69,11 @@ export const parallaxProjects: ParallaxProject[] = [
     featured: true,
     description:
       "Application privée d'aide à l'écriture par la voix : enregistrement, transcription, structuration du manuscrit, corrections, vérification factuelle, assistant contextualisé et export Word.",
+    longDescription:
+      "Application privée conçue pour transformer des idées racontées à l’oral en un manuscrit structuré, tout en laissant l’autrice garder le contrôle sur son texte.\n\nContexte\nL’écriture longue peut être freinée par la page blanche, la dispersion des notes et le temps nécessaire pour reprendre chaque passage. Le projet devait faciliter la production sans uniformiser la voix de l’autrice.\n\nSolution\nLe parcours commence par l’enregistrement audio et la transcription. Les contenus peuvent ensuite être organisés dans le manuscrit, corrigés et retravaillés. L’application propose une vérification factuelle, un assistant qui conserve le contexte du livre et un export Word pour poursuivre le travail hors de l’outil.\n\nRôle\nConception du parcours d’écriture, structuration des données du manuscrit, intégration des fonctions d’IA, développement de l’interface privée et génération de l’export DOCX.\n\nRésultat\nUn espace de travail unique qui relie la parole, la transcription, l’édition et l’export, sans présenter le premier résultat de l’IA comme un texte définitif.\n\nPoints clés\n- Audio et transcription dans le même parcours\n- Organisation progressive du manuscrit\n- Correction et vérification factuelle séparées\n- Assistant contextualisé par le contenu du livre\n- Export Word exploitable\n\nCe que j’en retiens\n- Une IA éditoriale doit assister une voix, pas la remplacer\n- Les étapes de génération, vérification et validation doivent rester distinctes\n- L’export est essentiel pour ne pas enfermer l’utilisateur dans l’application",
     imageSrc: '/projects/lorene.svg',
     color: '#E8E1DB',
+    slug: 'ecrire-son-livre',
   },
   {
     id: 'ping-pang',
@@ -75,8 +82,11 @@ export const parallaxProjects: ParallaxProject[] = [
     featured: true,
     description:
       "Écosystème de suivi d'entraînement et de classement pour le tennis de table : Supabase, sécurité des données, imports multi-sources et moteur Glicko-2 testé.",
+    longDescription:
+      "Architecture de données pour un écosystème consacré au tennis de table, reliant le suivi d’entraînement, les profils joueurs et un classement calculé de manière cohérente.\n\nContexte\nLes données utiles viennent de plusieurs sources et ne désignent pas toujours les joueurs de la même façon. Le défi principal était de construire une base fiable avant d’ajouter les fonctions visibles de l’application.\n\nSolution\nConception d’une architecture Supabase partagée par les applications d’entraînement et de ranking. Les imports multi-sources sont normalisés avant leur rapprochement avec les profils utilisateurs. Le moteur de classement Glicko-2 a été isolé et testé pour rendre les calculs reproductibles. Les règles de sécurité limitent l’accès et les modifications selon le rôle de l’utilisateur.\n\nRôle\nModélisation du schéma, réflexion sur les identifiants et la déduplication, définition des règles de sécurité, préparation des imports et validation du moteur de classement.\n\nRésultat\nUne fondation technique commune pour éviter que chaque fonctionnalité recrée sa propre version des joueurs, des matchs et des classements.\n\nPoints clés\n- Supabase comme source de vérité\n- Imports provenant de plusieurs systèmes\n- Correspondance entre profils et ranking mondial\n- Calcul Glicko-2 testé séparément\n- Sécurité des données intégrée au schéma\n\nCe que j’en retiens\n- Un bon algorithme ne compense pas des identités mal rapprochées\n- Les règles d’accès doivent être pensées avec le modèle de données\n- Les imports ont besoin de contrôles et d’une trace de leur provenance",
     imageSrc: '/projects/ping-pang.svg',
     color: '#DDE7DF',
+    slug: 'ping-pang',
   },
   {
     id: 'galaad',
@@ -85,8 +95,11 @@ export const parallaxProjects: ParallaxProject[] = [
     featured: false,
     description:
       "Analyse critique d'idées business : marché, risques, modèle économique, plan MVP, décision Go/No-Go, rapport structuré et mentor IA contextualisé.",
+    longDescription:
+      "Conception d’un SaaS qui challenge une idée d’entreprise avant d’investir du temps et de l’argent dans sa réalisation. Le produit est présenté comme une exploration et un prototype, pas comme une activité déjà commercialisée.\n\nProblème\nLes porteurs de projet obtiennent facilement des réponses encourageantes mais rarement une critique structurée de leurs hypothèses, de leurs risques et de leur modèle économique.\n\nSolution\nBizroast organise l’analyse autour du besoin, du marché, de la concurrence, des risques et de la monétisation. La sortie comprend une décision argumentée Go/No-Go, les hypothèses à tester et un plan de MVP. Un mentor IA conserve le contexte du rapport pour répondre aux questions suivantes sans recommencer l’analyse.\n\nRôle\nDéfinition du parcours, structuration du rapport, conception des critères d’analyse, prototypage de l’interface et du fonctionnement du mentor contextualisé.\n\nLivrable\nUn concept produit cohérent et un prototype permettant d’évaluer la qualité de l’analyse, le ton critique et l’utilité des recommandations avant une éventuelle commercialisation.\n\nPoints clés\n- Analyse par hypothèses plutôt que réponse générale\n- Risques et objections rendus visibles\n- Décision Go/No-Go expliquée\n- Plan MVP relié aux incertitudes prioritaires\n- Conversation conservant le contexte du rapport\n\nCe que j’en retiens\n- Une recommandation utile doit montrer ce qui pourrait la rendre fausse\n- Le rapport doit déboucher sur des tests concrets\n- Le contexte conservé améliore fortement les échanges après l’analyse",
     imageSrc: '/projects/galaad.svg',
     color: '#E8E4DC',
+    slug: 'bizroast',
   },
   {
     id: 'coplat',
@@ -95,8 +108,11 @@ export const parallaxProjects: ParallaxProject[] = [
     featured: false,
     description:
       "Plateforme de pilotage pour restaurants : photos améliorées par IA, menu QR analytique, suivi de réputation, copilote de profitabilité et scénarios financiers.",
+    longDescription:
+      "Étude et conception d’une plateforme SaaS destinée aux restaurants indépendants. Coplat rassemble plusieurs leviers souvent traités séparément : attractivité des plats, lecture du menu, réputation et marge.\n\nProblème\nUn restaurateur peut manquer de temps pour analyser ses ventes, améliorer ses visuels, suivre les avis et identifier les plats réellement rentables. Multiplier les outils augmente encore la complexité.\n\nSolution envisagée\nQuatre modules ont été cadrés : amélioration des photos culinaires par IA, menu QR avec données de consultation, radar des avis clients et assistant de profitabilité. Le travail inclut le positionnement, le prix, les unit economics et plusieurs scénarios financiers sur trois ans.\n\nRôle\nDéfinition de la proposition de valeur, découpage fonctionnel, étude du modèle économique, hypothèses de pricing et formalisation du business plan.\n\nÉtat du projet\nCoplat reste un concept de produit documenté. La fiche présente donc le raisonnement, les hypothèses et le périmètre prévu, sans prétendre qu’un déploiement restaurant a déjà eu lieu.\n\nPoints clés\n- Vision unifiée du menu, des avis et de la rentabilité\n- Fonctions IA reliées à une décision métier\n- Modèle d’abonnement étudié\n- Unit economics et projections sur trois ans\n- Priorisation nécessaire pour construire un MVP testable\n\nCe que j’en retiens\n- Un produit vertical doit parler le langage du métier\n- Chaque module doit prouver sa valeur indépendamment\n- Les projections financières doivent rester reliées à des hypothèses explicites",
     imageSrc: '/projects/coplat.svg',
     color: '#E3E7EC',
+    slug: 'coplat',
   },
   {
     id: 'omi',
@@ -105,8 +121,11 @@ export const parallaxProjects: ParallaxProject[] = [
     featured: false,
     description:
       "Application imaginée pour répartir les tâches familiales, organiser les plannings, préparer les repas et envoyer des rappels, avec travail sur l'acquisition et la fidélisation.",
+    longDescription:
+      "Concept d’application familiale pensé pour rendre visible la charge d’organisation quotidienne et faciliter sa répartition entre les membres du foyer.\n\nProblème\nLes tâches, rendez-vous, repas et rappels sont souvent répartis entre plusieurs applications ou restent dans la tête d’une seule personne. Le problème est moins le manque d’outils que leur fragmentation et la difficulté à faire participer toute la famille.\n\nSolution envisagée\nOmi réunit les missions du foyer, les plannings, la préparation des repas, les messages et les rappels. Le travail produit couvre également l’identité de marque, le positionnement B2C, les canaux d’acquisition et les mécanismes de fidélisation.\n\nRôle\nCadrage du problème, définition des utilisateurs, priorisation des fonctions, réflexion sur l’expérience familiale et construction d’une première stratégie de mise sur le marché.\n\nÉtat du projet\nOmi est une exploration produit. Les parcours et l’approche marketing ont été définis, mais la fiche ne présente pas le service comme déjà adopté par des familles.\n\nPoints clés\n- Répartition claire des responsabilités\n- Planning partagé et rappels\n- Repas intégrés à l’organisation du foyer\n- Positionnement accessible à plusieurs générations\n- Acquisition et rétention pensées avec le produit\n\nCe que j’en retiens\n- Une application familiale doit rester simple pour tous les âges\n- L’adoption collective est plus difficile que l’inscription individuelle\n- Les rappels doivent aider sans devenir une nouvelle source de pression",
     imageSrc: '/projects/omi.svg',
     color: '#F2EDCF',
+    slug: 'omi',
   },
   {
     id: 'ar-plate',
@@ -115,8 +134,11 @@ export const parallaxProjects: ParallaxProject[] = [
     featured: false,
     description:
       "Validation marché d'un service d'amélioration de photos culinaires par IA : huit entretiens, test de quatre hypothèses, objections, sensibilité au prix et plan pilote.",
+    longDescription:
+      "Étude de marché consacrée à un service d’amélioration de photos culinaires par IA pour les restaurateurs, menée avant de développer une solution complète.\n\nQuestion de départ\nDe meilleures photos peuvent-elles créer assez de valeur pour qu’un restaurant adopte et paie un service dédié, sans rendre les plats artificiels ni ajouter une tâche complexe à l’équipe ?\n\nMéthode\nHuit entretiens ont été conduits avec des restaurateurs pour tester quatre hypothèses. Les échanges ont porté sur la qualité des photos existantes, les usages de livraison et de réseaux sociaux, les objections face aux images retouchées et la sensibilité au prix. Cinq risques principaux ont ensuite été classés pour préparer un pilote.\n\nRôle\nPréparation du guide d’entretien, conduite et synthèse des échanges, comparaison des réponses, analyse des objections et transformation des résultats en prochaines expériences.\n\nLivrable\nUne lecture structurée du marché et un plan de pilote, avec les hypothèses encore fragiles clairement séparées des constats répétés pendant les entretiens.\n\nPoints clés\n- 8 entretiens qualitatifs\n- 4 hypothèses testées\n- 5 risques classés\n- Analyse des objections et du prix\n- Plan pilote avant développement complet\n\nCe que j’en retiens\n- Poser des questions sur les pratiques passées plutôt que demander une intention vague\n- Une objection récurrente vaut plus qu’un compliment poli\n- Le niveau de retouche acceptable fait partie du produit, pas seulement du modèle IA",
     imageSrc: '/projects/ar-plate.svg',
     color: '#EFE5DC',
+    slug: 'ar-plate',
   },
   {
     id: '2',
