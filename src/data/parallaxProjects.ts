@@ -102,19 +102,6 @@ export const parallaxProjects: ParallaxProject[] = [
     slug: 'bizroast',
   },
   {
-    id: 'coplat',
-    title: 'Coplat',
-    category: 'SaaS restauration · Business & data',
-    featured: false,
-    description:
-      "Plateforme de pilotage pour restaurants : photos améliorées par IA, menu QR analytique, suivi de réputation, copilote de profitabilité et scénarios financiers.",
-    longDescription:
-      "Étude et conception d’une plateforme SaaS destinée aux restaurants indépendants. Coplat rassemble plusieurs leviers souvent traités séparément : attractivité des plats, lecture du menu, réputation et marge.\n\nProblème\nUn restaurateur peut manquer de temps pour analyser ses ventes, améliorer ses visuels, suivre les avis et identifier les plats réellement rentables. Multiplier les outils augmente encore la complexité.\n\nSolution envisagée\nQuatre modules ont été cadrés : amélioration des photos culinaires par IA, menu QR avec données de consultation, radar des avis clients et assistant de profitabilité. Le travail inclut le positionnement, le prix, les unit economics et plusieurs scénarios financiers sur trois ans.\n\nRôle\nDéfinition de la proposition de valeur, découpage fonctionnel, étude du modèle économique, hypothèses de pricing et formalisation du business plan.\n\nÉtat du projet\nCoplat reste un concept de produit documenté. La fiche présente donc le raisonnement, les hypothèses et le périmètre prévu, sans prétendre qu’un déploiement restaurant a déjà eu lieu.\n\nPoints clés\n- Vision unifiée du menu, des avis et de la rentabilité\n- Fonctions IA reliées à une décision métier\n- Modèle d’abonnement étudié\n- Unit economics et projections sur trois ans\n- Priorisation nécessaire pour construire un MVP testable\n\nCe que j’en retiens\n- Un produit vertical doit parler le langage du métier\n- Chaque module doit prouver sa valeur indépendamment\n- Les projections financières doivent rester reliées à des hypothèses explicites",
-    imageSrc: '/projects/coplat.svg',
-    color: '#E3E7EC',
-    slug: 'coplat',
-  },
-  {
     id: 'omi',
     title: 'Omi',
     category: 'Produit · Organisation familiale',
