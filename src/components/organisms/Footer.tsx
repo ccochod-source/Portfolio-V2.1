@@ -15,7 +15,40 @@ export const Footer: React.FC = () => {
       animate="visible"
       className="w-full py-8 mt-16 border-t border-sand"
     >
-      <div className="flex flex-col items-center gap-6">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6">
+        {/* Coordonnées professionnelles */}
+        <div className="flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+          <motion.a
+            href="mailto:cochod.elevate@icloud.com"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ y: -2 }}
+            className="group flex min-w-0 items-center justify-between gap-5 rounded-2xl border border-sand bg-cream/70 px-5 py-4 transition-colors hover:border-accent-dark sm:min-w-[21rem]"
+            aria-label="Envoyer un email à cochod.elevate@icloud.com"
+          >
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-text-light">Mail</span>
+            <span className="truncate text-sm font-semibold text-text-dark transition-colors group-hover:text-accent-dark sm:text-base">
+              cochod.elevate@icloud.com
+            </span>
+          </motion.a>
+
+          <motion.a
+            href="tel:+33743700596"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            whileHover={{ y: -2 }}
+            className="group flex items-center justify-between gap-5 rounded-2xl border border-sand bg-cream/70 px-5 py-4 transition-colors hover:border-accent-dark sm:min-w-[17rem]"
+            aria-label="Appeler le 07 43 70 05 96"
+          >
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-text-light">Téléphone</span>
+            <span className="whitespace-nowrap text-sm font-semibold text-text-dark transition-colors group-hover:text-accent-dark sm:text-base">
+              07 43 70 05 96
+            </span>
+          </motion.a>
+        </div>
+
         {/* Social Links */}
         <div className="flex items-center justify-center gap-6">
           {/* LinkedIn Icon */}
