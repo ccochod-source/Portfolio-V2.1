@@ -109,7 +109,7 @@ export default function AboutPage() {
             Lors d'un stage de huit semaines à la <strong>Brasserie de Tahiti</strong>, j'ai livré cinq applications métiers : BI et recherche documentaire, gestion des investissements, suivi de flotte, sécurité terrain et pilotage des coûts informatiques. Ce travail m'a amené à gérer des données historiques, des droits utilisateurs, des exports, des contrôles et des tests avec les équipes.
           </p>
           <p>
-            Je développe aussi des projets clients comme <strong>Auralife</strong>, un site administrable avec automatisations, et une application privée d'aide à l'écriture par la voix. D'autres projets — PayFit, Sephora Intel, Mirakl, Ping Pang et Eugeniagram — m'ont permis d'approfondir les agents IA, les pipelines de données, Supabase et les produits web.
+            Je développe aussi des projets clients comme <strong>Auralife</strong>, un site administrable avec automatisations, et une application privée d'aide à l'écriture par la voix. D'autres projets — PayFit, Mirakl, Ping Pang et Eugeniagram — m'ont permis d'approfondir les agents IA, les pipelines de données, Supabase et les produits web.
           </p>
         </>
       ),

@@ -1,5 +1,3 @@
-import { beiteaSlideshowUrls } from '@/data/beiteaSlidesOrder';
-import { neogenIaSlideshowUrls } from '@/data/neogenIaSlidesOrder';
 import { payfitSlideshowUrls } from '@/data/payfitSlidesOrder';
 
 export interface ParallaxProject {
@@ -128,23 +126,6 @@ export const parallaxProjects: ParallaxProject[] = [
     slug: 'ar-plate',
   },
   {
-    id: '2',
-    title: 'Beitea',
-    description:
-      'Stratégie marketing pour BEITEA (bubble tea, Champs-Élysées) : fidélisation, panier moyen et leviers sociaux/gamification, avec une logique testable (A/B, données comportementales).',
-    longDescription:
-      'Stratégie marketing terrain pour un point de vente à fort flux touristique : monter la fréquence et le panier sans alourdir le parcours d’achat, via leviers communautaires et ludiques.\n\nContexte\nBEITEA est positionné sur un axe à très forte affluence (Champs-Élysées) où la concurrence sur l’attention est forte : il faut créer des raisons de revenir et d’augmenter spontanément le ticket, pas seulement des promos génériques.\n\nSolution\nConstruction d’un funnel adapté au lieu de vente (TOFU / MOFU / BOFU) avec une boisson « mystère » pensée comme contenu partageable au milieu du parcours, et un jeu de type grattage après un seuil de panier pour inciter à dépasser un ticket cible (ex. +10 €). Le deck pitch (slides PNG ci-dessous) reprend cette narrative sous forme de présentation prête pour la soutenance — sans dépendre d’un lien Canva externe.\n\nRôle\nDéfinition des messages, des hypothèses testables et des indicateurs à suivre (panier, retour visite, engagement social possible) ; alignement entre concept marketing et faisabilité opérationnelle en point de vente.\n\nImpact\nLivrable prêt pour expérimenter et mesurer sur le terrain : grille d’AB testing lorsque les volumes le permettent, lecture des premiers signaux comportementaux plutôt que des promesses sans test.\n\nPoints clés\n- Funnel pensé pour du retail à fort passage\n- Levier social (mystère / contenu) + levier incitatif (seuil de panier)\n- Méthode : hypothèse → test → lecture des données\n- Deck matcha / café-beauté intégré à la page projet (bouton slideshow)\n\nCe que j’en retiens\n- Lier chaque idée à une métrique possible en magasin\n- Éviter les campagnes décoratives sans lien avec le panier\n- Itérer avec de petits tests plutôt qu’un gros bloc non mesuré',
-    imageSrc: '/beitea-capture.png',
-    featured: false,
-    color: '#A8D5BA',
-    slug: 'beitea',
-    slideshowSrcs: beiteaSlideshowUrls(),
-    extraLink: {
-      url: 'https://www.google.com/maps/search/Beitea+Paris+Av+des+Champs-%C3%89lys%C3%A9es',
-      label: 'Quartier & zone commerciale (Google Maps)',
-    },
-  },
-  {
     id: '3',
     title: 'PayFit — plateforme d’articles IA (EEAT + SEO)',
     description:
@@ -159,48 +140,6 @@ export const parallaxProjects: ParallaxProject[] = [
     extraLink: {
       url: 'https://platform.openai.com/docs/guides/text-generation',
       label: 'Guides OpenAI API (contexte génération de texte)',
-    },
-  },
-  {
-    id: '4',
-    title: 'Neogen-IA',
-    description:
-      'Neogen-IA : mini-agence de contenu pilotée par l’IA pour Eugénia — ton de voice, prompts réutilisables, production de contenus et visuels, avec une équipe rôles CEO/CTO/CMO/CDO.',
-    longDescription:
-      "Programme « agence » de contenu pour l’école : produire en continu sans diluer la voix de marque, en combinant générateurs IA et relecture humaine sur les zones sensibles.\n\nContexte\nBesoin institutionnel de volumes de contenus homogènes (posts, fiches, mails) sans embaucher une agence externe : il faut cadre, prompts, et process de validation interne.\n\nSolution\nAteliers de définition du tone of voice ; bibliothèque de prompts par type de livrable ; packs visuels cohérents retracés dans les slides PNG ci-dessous (présentation intégrée au site, sans lien Canva externe) ; document de référence partagé ; organisation en cellule projet (direction, technique, marketing, design) pour livrer un package complet.\n\nRôle\nContribution à la définition des consignes créatives, aux prompts, à la coordination des rôles et à la cohérence des livrables finaux.\n\nImpact\nUne chaîne reproductible : moins d’improvisation, plus de qualité par itération ; livrables utilisables tels quels pour communiquer sur l’école.\n\nPoints clés\n- Ton de voice explicite avant de scaler le volume\n- Prompts documentés (pas seulement dans la tête)\n- Séparation claire : contenu sensible vs contenu recyclable\n- Narration visuelle disponible en modale (slides du deck London / rouge beige)\n\nCe que j’en retiens\n- L’outil ne remplace pas le cadrage éditorial\n- La qualité vient du process avant le modèle\n- Une mini-structure forcée évite les zones grises entre rôles",
-    imageSrc: '/neogen-ia.png',
-    featured: false,
-    color: '#D4C4B0',
-    slug: 'neogen-ia',
-    slideshowSrcs: neogenIaSlideshowUrls(),
-    link: [
-      {
-        url: 'https://docs.google.com/document/d/1_KGaPBq7ZWT0HHp-KQN2BUU2I6FmuuUMpwAU4LoNGhY/edit?usp=sharing',
-        label: 'Voir le document',
-      },
-    ],
-    extraLink: {
-      url: 'https://www.eugeniaschool.com/',
-      label: 'Eugenia School — contexte projet',
-    },
-  },
-  {
-    id: '5',
-    title: 'Sephora Intel — Brand & Market Intelligence',
-    description:
-      'Veille e-réputation et intelligence marché : 170 000 signaux sur six plateformes, benchmark Sephora vs Nocibé et alertes en quasi temps réel.',
-    longDescription:
-      'Veille e-réputation et intelligence marché : 170 000 signaux sur six plateformes, benchmark Sephora vs Nocibé et alertes en quasi temps réel.\n\nContexte\nLes enseignes beauty peinent à centraliser signaux clients et réputation en ligne : données éclatées, veille lente, peu de vision comparative live avec la concurrence. Projet école (Eugenia School Paris, partenaire Licter) : concevoir une chaîne bout-en-bout, de la collecte à la recommandation pour une direction.\n\nSolution\nApplication web et pipelines Make.com : collecte multi-sources (Apify), dédoublonnage et stockage Supabase, enrichissement sémantique (GPT-4o-mini), reporting matinal (Slack / Gmail) et dashboard six vues (réputation, concurrence, alertes, etc.) avec Realtime, SWR et Recharts. Agent Mistral pour des next steps actionnables.\n\nRôle\nConception des workflows Make.com, nettoyage et structuration du dataset, prompts d’enrichissement, schéma Supabase et documentation de soutenance.\n\nImpact\n170 000 signaux traités · soutenance devant jury pro (avril 2026) · déploiement Vercel opérationnel.\n\nPoints clés\n- 170 000 signaux (TikTok, avis Google, Trustpilot, Instagram, X…)\n- Chaîne scraping → nettoyage → enrichissement LLM → dashboard temps réel\n- Benchmark sentiment Sephora vs Nocibé\n- Alertes bad buzz et synthèses automatiques (Slack / Gmail)\n\nCe que j’en retiens\n- Orchestrer des workflows Make.com à volume élevé\n- Normaliser un dataset multi-sources avant enrichissement IA\n- Cadrer des prompts d’analyse de sentiment et de thèmes\n- Brancher Realtime et visualisation sur une même source de vérité',
-    imageSrc: '/sephora-intel.png',
-    color: '#F3E9FF',
-    slug: 'sephora-intel',
-    link: [
-      { url: 'https://bbd-licter.vercel.app/', label: 'Voir le dashboard' },
-      { url: '/SEPHORA_INTEL_Soutenance_2026.pdf', label: 'Voir la soutenance (PDF)' },
-    ],
-    extraLink: {
-      url: 'https://apify.com',
-      label: 'Apify — acteurs scraping (réf.)',
     },
   },
   {
