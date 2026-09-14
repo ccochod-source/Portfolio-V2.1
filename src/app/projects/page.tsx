@@ -32,7 +32,6 @@ function ProjectDeckCard({ project, index, total }: ProjectDeckCardProps) {
   const y = useTransform(scrollYProgress, [0, 0.18, 0.78, 1], [72, 0, 0, -28]);
   const opacity = useTransform(scrollYProgress, [0, 0.12, 0.88, 1], [0.35, 1, 1, 0.58]);
   const externalLinks = getFlatProjectLinks(project).slice(0, 2);
-  const useContainedImage = project.id === '5' || project.id === '7';
 
   return (
     <motion.article
@@ -47,19 +46,13 @@ function ProjectDeckCard({ project, index, total }: ProjectDeckCardProps) {
       }}
       className="sticky top-4 mb-[18svh] grid h-[calc(100svh-2rem)] min-h-[560px] max-h-[820px] w-full scroll-mt-4 origin-top overflow-hidden rounded-[1.75rem] border border-black/10 shadow-[0_24px_70px_rgba(40,34,26,0.16)] last:mb-0 md:top-6 md:h-[min(84svh,820px)] md:min-h-[500px] md:grid-cols-[1.35fr_0.85fr] md:scroll-mt-6 md:rounded-[2.5rem]"
     >
-        <div
-          className={`group relative min-h-0 overflow-hidden bg-black/5 ${
-            useContainedImage ? 'p-5 md:p-8' : ''
-          }`}
-        >
+        <div className="group relative min-h-0 overflow-hidden bg-black/5">
           <Image
             src={project.imageSrc}
             alt={project.title}
             fill
             priority={index === 0}
-            className={`transition-transform duration-700 ease-out group-hover:scale-[1.025] ${
-              useContainedImage ? 'object-contain' : 'object-cover'
-            }`}
+            className="object-contain p-3 transition-transform duration-700 ease-out group-hover:scale-[1.015] sm:p-4 md:p-6"
             style={{ objectPosition: project.imagePosition || 'center center' }}
             sizes="(max-width: 768px) 100vw, 62vw"
           />
