@@ -26,6 +26,52 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     setMounted(true);
   }, []);
 
+  // Safari peut ignorer l'autoplay si l'état muet n'est appliqué qu'après
+  // l'insertion de la vidéo dans le DOM. On force donc les propriétés natives
+  // et on retente la lecture quand la vidéo ou la page redevient disponible.
+  useEffect(() => {
+    if (!mounted || !backgroundVideoRef.current) {
+      return;
+    }
+
+    const video = backgroundVideoRef.current;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+
+    const startPlayback = () => {
+      if (!video.paused) {
+        return;
+      }
+
+      void video.play().catch(() => {
+        // Safari peut différer la lecture jusqu'à ce que suffisamment de
+        // données soient chargées. L'événement canplay retentera ensuite.
+      });
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        startPlayback();
+      }
+    };
+
+    startPlayback();
+    video.addEventListener('loadedmetadata', startPlayback);
+    video.addEventListener('canplay', startPlayback);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('pageshow', startPlayback);
+
+    return () => {
+      video.removeEventListener('loadedmetadata', startPlayback);
+      video.removeEventListener('canplay', startPlayback);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('pageshow', startPlayback);
+    };
+  }, [mounted]);
+
   // Initialiser GSAP et ScrollTrigger
   useLayoutEffect(() => {
     // Ne pas initialiser si pas monté
@@ -155,6 +201,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         loop
         muted
         playsInline
+        preload="auto"
+        aria-hidden="true"
         style={{
           zIndex: 0,
           opacity: 1,
