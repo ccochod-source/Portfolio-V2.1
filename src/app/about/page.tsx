@@ -25,69 +25,77 @@ export default function AboutPage() {
       content: (
         <>
           <p className="mb-5">
-            Je travaille aussi bien sur la chaîne complète&nbsp;: collecte et mise en forme des données, automatisation avec des connecteurs métier, produits front propres pour présenter ou opérationnaliser le résultat.
+            Je relie le besoin métier à la réalisation technique&nbsp;: comprendre le processus, structurer les données, construire l’outil, le tester avec les utilisateurs et le rendre exploitable au quotidien. Chaque compétence ci-dessous est reliée à un projet concret du portfolio.
           </p>
 
           <div className="space-y-5">
             <div>
               <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
-                Data &amp; analyse
+                Applications web &amp; outils métiers
               </h4>
               <p className="mb-3">
-                Je construis des analyses fiables avec <strong>Google Sheets</strong>, des tableaux de bord lisibles dans <strong>Looker Studio</strong> et des requêtes en <strong>SQL</strong> pour explorer et croiser les données proprement. Exemple concret&nbsp;: une étude géographique sur l’accidentologie routière en France (données BAAC) où j’ai mis en évidence un écart de <strong>5,7 fois</strong> entre le taux observé outre-mer et en métropole.
+                Je conçois des interfaces responsives, des espaces d’administration, des formulaires dynamiques, des systèmes de rôles et des exports adaptés au travail réel des équipes. Cette compétence est visible dans les <Link href="/projects/brasserie-de-tahiti" className="font-semibold text-accent-dark hover:text-accent">cinq applications de la Brasserie de Tahiti</Link>, le site administrable <Link href="/projects/auralife" className="font-semibold text-accent-dark hover:text-accent">Auralife</Link> et l’application privée <Link href="/projects/ecrire-son-livre" className="font-semibold text-accent-dark hover:text-accent">Écrire son livre</Link>.
               </p>
             </div>
 
             <div>
               <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
-                Automatisation &amp; intégrations
+                Data, bases de données &amp; qualité
               </h4>
               <p className="mb-3">
-                Pour enchaîner les étapes sans bricolage fragile, je m’appuie sur des workflows no-code / low-code&nbsp;: orchestration bout-en-bout avec <strong>Make</strong>, scénarios avancés et webhooks avec <strong>n8n</strong>, automatisation SaaS avec <strong>Zapier</strong>, ainsi que des briques scraping et API (ex.&nbsp;<strong>Apify</strong>) quand il faut alimenter en continu des sources hétérogènes.
+                Je modélise les données, prépare les imports, nettoie les historiques et ajoute des contrôles pour éviter que l’interface repose sur une base fragile. À la Brasserie de Tahiti, cela a notamment concerné dix ans d’historique, 22&nbsp;000 entrées carburant et environ 400 anomalies détectées. Sur <Link href="/projects/ping-pang" className="font-semibold text-accent-dark hover:text-accent">Ping Pang</Link>, j’ai travaillé sur Supabase, les règles de sécurité, le rapprochement de données multi-sources et un moteur de classement Glicko-2 testé. L’<Link href="/projects/analyse-accidentologie" className="font-semibold text-accent-dark hover:text-accent">analyse Accidentologie</Link> montre mon travail de lecture, d’agrégation et de restitution de données ouvertes.
               </p>
             </div>
 
             <div>
               <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
-                IA &amp; agents
+                Automatisation, API &amp; intégrations
               </h4>
               <p className="mb-3">
-                Sur des cas orientés contenu ou enrichissement, je conçois des agents sur <strong>Dust</strong> (prompts, garde-fous, appels modèles) et j’intègre des modèles type <strong>OpenAI</strong> / <strong>Mistral</strong> dans des flux déjà structurés plutôt que du one-shot isolé.
+                Je construis des workflows avec Make, n8n, des webhooks et des API pour supprimer les actions répétitives et relier plusieurs services. Exemples&nbsp;: relance automatique après rendez-vous pour <Link href="/projects/auralife" className="font-semibold text-accent-dark hover:text-accent">Auralife</Link>, chaîne collecte → enrichissement → messages pour le <Link href="/projects/hackathon-mirakl" className="font-semibold text-accent-dark hover:text-accent">hackathon Mirakl</Link>, et intégration ITSM avec extraction de contrats PDF pendant mon stage.
               </p>
             </div>
 
             <div>
               <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
-                Développement web
+                IA appliquée à un usage précis
+              </h4>
+              <p className="mb-3">
+                J’intègre l’IA comme une étape contrôlée d’un produit&nbsp;: recherche RAG sur plus de 16&nbsp;000 pages documentaires, transcription audio, assistant contextualisé, vérification factuelle, extraction de documents et génération structurée. Ces usages sont présentés dans <Link href="/projects/brasserie-de-tahiti" className="font-semibold text-accent-dark hover:text-accent">Brasserie de Tahiti</Link>, <Link href="/projects/ecrire-son-livre" className="font-semibold text-accent-dark hover:text-accent">Écrire son livre</Link>, <Link href="/projects/payfit-plateforme-articles-ia" className="font-semibold text-accent-dark hover:text-accent">PayFit</Link> et <Link href="/projects/bizroast" className="font-semibold text-accent-dark hover:text-accent">Bizroast</Link>. Je sépare autant que possible génération, contrôle et validation humaine.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
+                Cadrage produit &amp; validation
               </h4>
               <p>
-                Je ne m’arrête pas aux vitrines&nbsp;: <strong>landing pages</strong>, <strong>portfolios</strong>, mais aussi des <strong>sites web orientés B2B</strong> (message clair, parcours prospect, offre lisible) et des <strong>dashboards B2B</strong> où l’on suit en un coup d’œil les indicateurs qui comptent — campagnes, performance, signaux opérationnels — sans noyer l’écran de chiffres.
-              </p>
-              <p className="mt-3">
-                Stack de prédilection&nbsp;: <strong>Next.js</strong>, <strong>Tailwind CSS</strong> et <strong>Cursor</strong>, avec des mises en ligne sur <strong>Vercel</strong> pour garder un cycle court du prototype à la prod. Je cultive la vitesse sous contrainte&nbsp;: <strong>landing complète en moins de cinq heures</strong> ou <strong>livraison ambitieuse sur une journée</strong>, pour forcer la clarté, l’itération et une exécution sans fioritures.
+                Avant de développer, je peux clarifier le problème, conduire des entretiens, classer les risques et définir une première version testable. Pour <Link href="/projects/ar-plate" className="font-semibold text-accent-dark hover:text-accent">AR Plate</Link>, j’ai mené huit entretiens, testé quatre hypothèses et préparé un plan pilote. Les projets <Link href="/projects/omi" className="font-semibold text-accent-dark hover:text-accent">Omi</Link> et <Link href="/projects/bizroast" className="font-semibold text-accent-dark hover:text-accent">Bizroast</Link> montrent aussi mon travail de priorisation, de parcours utilisateur et de définition de MVP.
               </p>
             </div>
           </div>
 
           <div className="mt-6 pt-5 border-t border-sand/60">
-            <p className="text-sm text-text-light mb-3">Outils &amp; stack (aperçu)</p>
+            <p className="text-sm text-text-light mb-3">Technologies et méthodes utilisées dans mes projets</p>
             <ul className="flex flex-wrap gap-2" aria-label="Liste d’outils maîtrisés">
               {[
-                'Google Sheets',
-                'Looker Studio',
+                'Next.js',
+                'React',
+                'TypeScript',
+                'Tailwind CSS',
+                'Supabase',
                 'SQL',
+                'Vercel',
                 'Make',
                 'n8n',
-                'Zapier',
-                'Dust',
-                'Apify',
+                'API & webhooks',
                 'OpenAI',
                 'Mistral',
-                'Next.js',
-                'Tailwind CSS',
-                'Cursor',
-                'Vercel',
-                'Supabase',
+                'Dust',
+                'Apify',
+                'RAG',
+                'Google Sheets',
+                'Looker Studio',
               ].map((tool) => (
                 <li
                   key={tool}
