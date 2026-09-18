@@ -1,35 +1,22 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { LenisProvider } from '@/components/providers/LenisProvider';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { SITE_URL, BRAND, organizationSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-v2-1-xi.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Clément Cochod — Développement, Data & IA',
-    template: '%s | Clément Cochod',
+    default: BRAND,
+    template: `%s | ${BRAND}`,
   },
-  description: "Portfolio de Clément Cochod : applications métiers, projets data, automatisations et produits numériques intégrant l'IA.",
-  keywords: ['Clément Cochod', 'applications métiers', 'data', 'intelligence artificielle', 'Next.js', 'Supabase', 'portfolio'],
   authors: [{ name: 'Clément Cochod' }],
   creator: 'Clément Cochod',
-  publisher: 'Clément Cochod',
+  publisher: BRAND,
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'fr_FR',
-    url: '/',
-    siteName: 'Clément Cochod — Portfolio',
-    title: 'Clément Cochod — Développement, Data & IA',
-    description: "Applications métiers, projets data, automatisations et produits numériques intégrant l'IA.",
-  },
-  twitter: {
-    card: 'summary',
-    title: 'Clément Cochod — Développement, Data & IA',
-    description: "Applications métiers, projets data, automatisations et produits numériques intégrant l'IA.",
   },
   robots: {
     index: true,
@@ -42,9 +29,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: '/',
-  },
 };
 
 export default function RootLayout({
@@ -55,6 +39,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
+        <JsonLd data={organizationSchema} />
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>

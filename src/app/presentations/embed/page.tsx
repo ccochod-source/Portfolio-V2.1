@@ -6,6 +6,8 @@ import { isCanvaPresentationUrl, toCanvaIframeSrc } from '@/lib/canvaEmbed';
 
 type Props = { searchParams: Promise<{ u?: string }> };
 
+export const metadata = { title: 'Présentation du projet', robots: { index: false, follow: true } };
+
 export default async function CanvaEmbedPage({ searchParams }: Props) {
   const params = await searchParams;
   const raw = params.u;

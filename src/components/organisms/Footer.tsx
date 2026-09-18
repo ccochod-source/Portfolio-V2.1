@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Text } from '@/components/atoms/Text';
 import { fadeInUp } from '@/lib/animations';
+import Link from 'next/link';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -16,6 +17,12 @@ export const Footer: React.FC = () => {
       className="w-full py-8 mt-16 border-t border-sand"
     >
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6">
+        <nav aria-label="Services et guides" className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm">
+          <Link href="/services/creation-site-internet" className="py-2 underline underline-offset-4">Sites internet</Link>
+          <Link href="/services/automatisation" className="py-2 underline underline-offset-4">Automatisations & Dust</Link>
+          <Link href="/services/application-sur-mesure" className="py-2 underline underline-offset-4">Applications sur mesure</Link>
+          <Link href="/#guides" className="py-2 underline underline-offset-4">Guides pratiques</Link>
+        </nav>
         {/* Coordonnées professionnelles */}
         <div className="flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
           <motion.a data-mobile-static
@@ -25,7 +32,7 @@ export const Footer: React.FC = () => {
             transition={{ duration: 0.5 }}
             whileHover={{ y: -2 }}
             className="group flex min-w-0 items-center justify-between gap-5 rounded-2xl border border-sand bg-cream/70 px-5 py-4 transition-colors hover:border-accent-dark sm:min-w-[21rem]"
-            aria-label="Envoyer un email à cochod.elevate@icloud.com"
+            aria-label="Mail cochod.elevate@icloud.com — envoyer un email"
           >
             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-text-light">Mail</span>
             <span className="truncate text-sm font-semibold text-text-dark transition-colors group-hover:text-accent-dark sm:text-base">
@@ -40,7 +47,7 @@ export const Footer: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.08 }}
             whileHover={{ y: -2 }}
             className="group flex items-center justify-between gap-5 rounded-2xl border border-sand bg-cream/70 px-5 py-4 transition-colors hover:border-accent-dark sm:min-w-[17rem]"
-            aria-label="Appeler le 07 43 70 05 96"
+            aria-label="Téléphone 07 43 70 05 96 — appeler"
           >
             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-text-light">Téléphone</span>
             <span className="whitespace-nowrap text-sm font-semibold text-text-dark transition-colors group-hover:text-accent-dark sm:text-base">
@@ -129,10 +136,10 @@ export const Footer: React.FC = () => {
         {/* Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
           <Text variant="caption" className="text-text-light">
-            © {currentYear} Clément Cochod
+            © {currentYear} Cochod Elevate · Clément Cochod
           </Text>
           <Text variant="caption" className="text-text-light">
-            Développement · Data · IA
+            Sites internet · Applications · Automatisations
           </Text>
         </div>
       </div>

@@ -1,25 +1,25 @@
 import type { MetadataRoute } from 'next';
 import { getProjectsWithSlug } from '@/lib/projects';
+import { SITE_URL } from '@/lib/seo';
+import { services } from '@/data/services';
+import { guides } from '@/data/guides';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-v2-1-xi.vercel.app';
+  const siteUrl = SITE_URL;
 
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: siteUrl,
-      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
       url: `${siteUrl}/projects`,
-      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${siteUrl}/about`,
-      lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
@@ -27,10 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const projectPages: MetadataRoute.Sitemap = getProjectsWithSlug().map((project) => ({
     url: `${siteUrl}/projects/${project.slug}`,
-    lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.8,
   }));
 
-  return [...staticPages, ...projectPages];
+  const contentPages: MetadataRoute.Sitemap = [
+    ...services.map(service => ({ url: `${siteUrl}/services/${service.slug}` })),
+    ...guides.map(guide => ({ url: `${siteUrl}/guides/${guide.slug}` })),
+  ];
+  return [...staticPages, ...projectPages, ...contentPages];
 }

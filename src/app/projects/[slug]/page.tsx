@@ -8,6 +8,10 @@ import { Text } from '@/components/atoms/Text';
 import { PresentationAwareLink } from '@/components/atoms/PresentationAwareLink';
 import { ProjectSlidesModal } from '@/components/molecules/ProjectSlidesModal';
 import { getProjectBySlug, getProjectsWithSlug } from '@/lib/projects';
+import { projectSeo } from '@/data/projectSeo';
+import { getService } from '@/data/services';
+import { pageMetadata } from '@/lib/seo';
+import { Breadcrumbs } from '@/components/seo/Editorial';
 import {
   getFlatProjectLinks,
   googleDocPreviewEmbedUrl,
@@ -23,11 +27,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
-  if (!project) return { title: 'Projet introuvable' };
-  return {
-    title: `${project.title} — Portfolio`,
-    description: project.longDescription?.slice(0, 155) ?? project.description.slice(0, 155),
-  };
+  if (!project) notFound();
+  const seo = projectSeo[slug];
+  return pageMetadata(seo?.title ?? project.title, seo?.description ?? project.description, `/projects/${slug}`, project.imageSrc);
 }
 
 function categoryBadgeLabel(cat: ReturnType<typeof linkCategory>): string {
@@ -78,11 +80,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       <Header />
 
       <main className="flex-1 w-full max-w-3xl mx-auto px-6 md:px-8 py-10 md:py-14 pb-24">
-        <nav className="text-sm text-text-light mb-8">
-          <Link href="/projects" className="hover:text-accent-dark transition-colors">
-            ← Tous les projets
-          </Link>
-        </nav>
+        <Breadcrumbs items={[{ name: 'Accueil', path: '/' }, { name: 'Projets', path: '/projects' }, { name: project.title, path: `/projects/${slug}` }]} />
 
         <div
           className="rounded-2xl p-8 md:p-10 border border-sand/60 shadow-sm mb-10"
@@ -110,8 +108,14 @@ export default async function ProjectDetailPage({ params }: Props) {
           ) : (
             <p className="text-text-light text-sm mb-6">Étude de cas</p>
           )}
-          <div className="text-text whitespace-pre-line leading-relaxed text-base md:text-lg">
-            {project.longDescription ?? project.description}
+          <div className="text-text leading-relaxed text-base md:text-lg">
+            {(project.longDescription ?? project.description).split('\n\n').map((block, index) => {
+              const [heading, ...lines] = block.split('\n');
+              if (index === 0 || lines.length === 0) return <p key={index} className="mt-5">{block}</p>;
+              return <section key={index} className="mt-7"><h2 className="mb-3 text-xl font-semibold text-text-dark">{heading}</h2>
+                {lines.every(line => line.startsWith('- ')) ? <ul className="list-disc space-y-2 pl-5">{lines.map(line => <li key={line}>{line.slice(2)}</li>)}</ul> : <p className="whitespace-pre-line">{lines.join('\n')}</p>}
+              </section>;
+            })}
           </div>
         </div>
 
@@ -220,6 +224,14 @@ export default async function ProjectDetailPage({ params }: Props) {
             </ul>
           </section>
         )}
+        <section className="mt-12 rounded-2xl border border-sand p-6">
+          <h2 className="text-2xl font-semibold">Un besoin similaire dans votre activité ?</h2>
+          <p className="mt-3 leading-relaxed">Découvrez les prestations que je propose, avec un périmètre adapté à votre projet.</p>
+          <ul className="mt-4 space-y-3">{(projectSeo[slug]?.services ?? []).map(serviceSlug => {
+            const service = getService(serviceSlug);
+            return service ? <li key={serviceSlug}><Link href={`/services/${serviceSlug}`} className="inline-block py-2 font-semibold underline underline-offset-4">{service.label} →</Link></li> : null;
+          })}</ul>
+        </section>
       </main>
 
       <Footer />

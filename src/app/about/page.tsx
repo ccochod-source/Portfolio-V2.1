@@ -179,7 +179,7 @@ export default function AboutPage() {
                 variants={fadeInUp}
                 className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-sand/50 shadow-sm hover:shadow-md transition-shadow duration-300"
               >
-                <Text variant="h3" className="text-accent-dark mb-4">
+                <Text variant="h2" className="text-accent-dark mb-4 text-2xl">
                   {section.title}
                 </Text>
                 <div className="text-text leading-relaxed">

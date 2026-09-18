@@ -23,7 +23,7 @@ const config: Config = {
         accent: {
           DEFAULT: '#D4A574',
           light: '#E8C9A0',
-          dark: '#B8905A',
+          dark: '#806139',
         },
         sand: {
           DEFAULT: '#E8DCC6',
@@ -58,4 +58,3 @@ const config: Config = {
 };
 
 export default config;
-
