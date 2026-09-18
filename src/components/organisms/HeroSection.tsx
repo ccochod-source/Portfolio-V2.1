@@ -20,11 +20,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const maskGroupRef = useRef<SVGGElement>(null);
   const ctxRef = useRef<gsap.Context | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [portalFontSize, setPortalFontSize] = useState(18);
 
   // Rendu client pur - anti-flash
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // The square SVG is cropped to fill the screen. Fit its text to the
+  // visible width on portrait screens, including after rotation.
+  useLayoutEffect(() => {
+    if (!mounted || !containerRef.current) return;
+    const container = containerRef.current;
+    const observer = new ResizeObserver(() => {
+      const { width, height } = container.getBoundingClientRect();
+      setPortalFontSize(18 * Math.min(1, width / Math.max(height, 1)));
+    });
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [mounted]);
 
   // Safari peut ignorer l'autoplay si l'état muet n'est appliqué qu'après
   // l'insertion de la vidéo dans le DOM. On force donc les propriétés natives
@@ -180,22 +194,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   // Early return si pas monté (après tous les hooks)
   if (!mounted) {
-    return <div className="bg-[#FDFCF0] w-screen h-screen" />;
+    return <div className="h-[100svh] w-full bg-[#FDFCF0]" />;
   }
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen overflow-hidden"
+      className="relative h-[100svh] w-full overflow-hidden"
       style={{ 
         backgroundColor: '#FDFCF0',
         visibility: 'hidden',
       }}
     >
-      {/* Vidéo de fond - position fixed, z-0 */}
+      {/* The media stays inside the section pinned by ScrollTrigger. */}
       <video
         ref={backgroundVideoRef}
-        className="fixed inset-0 w-full h-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover"
         src={backgroundVideo}
         autoPlay
         loop
@@ -209,9 +223,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         }}
       />
 
-      {/* SVG masque inversé - position fixed, z-10 */}
+      {/* SVG masque inversé */}
       <svg
-  className="fixed inset-0 w-full h-full"
+  className="absolute inset-0 h-full w-full"
   style={{ zIndex: 10, pointerEvents: 'none' }}
   viewBox="0 0 100 100"
   preserveAspectRatio="xMidYMid slice" // CHANGE CECI
@@ -226,11 +240,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {/* Rectangle fantôme pour forcer les dimensions 100x100 */}
               <rect width="100" height="100" fill="none" />
               <text
+                className="portal-word"
                 x="50%"
                 y="46"
                 textAnchor="middle"
                 dominantBaseline="alphabetic"
-                fontSize="18"
+                fontSize={portalFontSize}
                 fontWeight="900"
                 fontFamily="system-ui, sans-serif"
                 letterSpacing="-0.05em"
@@ -247,11 +262,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   fill="black"
 />
               <text
+                className="portal-word"
                 x="50%"
                 y="54"
                 textAnchor="middle"
                 dominantBaseline="hanging"
-                fontSize="18"
+                fontSize={portalFontSize}
                 fontWeight="900"
                 fontFamily="system-ui, sans-serif"
                 letterSpacing="-0.05em"
@@ -267,7 +283,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </svg>
 
       {/* Indicateur de scroll */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30">
+      <div
+        className="absolute left-1/2 z-30 -translate-x-1/2"
+        style={{ bottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}
+      >
         <div className="flex flex-col items-center gap-2">
           <span className="text-sm font-medium" style={{ color: '#3A3A3A' }}>
             Scroll
@@ -308,6 +327,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         .animate-bounce-arrow {
           animation: bounce-arrow 2s ease-in-out infinite;
         }
+
       `}</style>
     </section>
   );

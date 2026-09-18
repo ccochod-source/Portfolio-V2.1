@@ -14,14 +14,14 @@ export const Header: React.FC = () => {
       variants={slideInLeft}
       initial="hidden"
       animate="visible"
-      className="w-full py-8 md:py-12 px-6 md:px-8 backdrop-blur-sm bg-cream/80"
+      className="w-full bg-cream/80 px-4 py-5 backdrop-blur-sm sm:px-6 sm:py-8 md:px-8 md:py-12"
     >
       <nav className="flex items-center justify-center max-w-7xl mx-auto">
         <motion.div
           variants={slideInRight}
           initial="hidden"
           animate="visible"
-          className="flex items-center gap-6"
+          className="flex items-center gap-5 sm:gap-6"
         >
           <Link
             href="/"
@@ -58,4 +58,3 @@ export const Header: React.FC = () => {
     </motion.header>
   );
 };
-
