@@ -81,3 +81,33 @@ html.lenis {
   color: #FDFCF0;
 }
 
+/* Native scrolling and fully visible content on touch devices. These rules
+   also apply before hydration, so an animation cannot hide mobile content. */
+@media (max-width: 1023px), (any-pointer: coarse), (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  [data-mobile-static] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .project-deck-card {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    grid-template-columns: minmax(0, 1fr);
+    margin-bottom: 1.5rem;
+    opacity: 1 !important;
+    transform: none !important;
+    scroll-margin-top: 1rem;
+  }
+
+  .project-deck-card > :first-child { aspect-ratio: 16 / 9; }
+  .project-deck-card h2 { font-size: clamp(1.75rem, 6vw, 2.5rem); overflow-wrap: anywhere; }
+  .project-deck-card a { min-height: 44px; }
+  .project-deck-card .line-clamp-4 { display: block; -webkit-line-clamp: unset; overflow: visible; }
+}

@@ -1,334 +1,41 @@
 'use client';
 
-import React, { useRef, useLayoutEffect, useState, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { useDesktopMotion } from '@/hooks/useDesktopMotion';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
-interface HeroSectionProps {
-  backgroundVideo?: string;
-}
-
-export const HeroSection: React.FC<HeroSectionProps> = ({
-  backgroundVideo = '/IMG_0764.mp4',
-}) => {
-  const containerRef = useRef<HTMLElement>(null);
-  const backgroundVideoRef = useRef<HTMLVideoElement>(null);
-  const maskGroupRef = useRef<SVGGElement>(null);
-  const ctxRef = useRef<gsap.Context | null>(null);
-  const [mounted, setMounted] = useState(false);
-  const [portalFontSize, setPortalFontSize] = useState(18);
-
-  // Rendu client pur - anti-flash
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // The square SVG is cropped to fill the screen. Fit its text to the
-  // visible width on portrait screens, including after rotation.
-  useLayoutEffect(() => {
-    if (!mounted || !containerRef.current) return;
-    const container = containerRef.current;
-    const observer = new ResizeObserver(() => {
-      const { width, height } = container.getBoundingClientRect();
-      setPortalFontSize(18 * Math.min(1, width / Math.max(height, 1)));
-    });
-    observer.observe(container);
-    return () => observer.disconnect();
-  }, [mounted]);
-
-  // Safari peut ignorer l'autoplay si l'état muet n'est appliqué qu'après
-  // l'insertion de la vidéo dans le DOM. On force donc les propriétés natives
-  // et on retente la lecture quand la vidéo ou la page redevient disponible.
-  useEffect(() => {
-    if (!mounted || !backgroundVideoRef.current) {
-      return;
-    }
-
-    const video = backgroundVideoRef.current;
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
-    video.setAttribute('muted', '');
-    video.setAttribute('playsinline', '');
-
-    const startPlayback = () => {
-      if (!video.paused) {
-        return;
-      }
-
-      void video.play().catch(() => {
-        // Safari peut différer la lecture jusqu'à ce que suffisamment de
-        // données soient chargées. L'événement canplay retentera ensuite.
-      });
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        startPlayback();
-      }
-    };
-
-    startPlayback();
-    video.addEventListener('loadedmetadata', startPlayback);
-    video.addEventListener('canplay', startPlayback);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('pageshow', startPlayback);
-
-    return () => {
-      video.removeEventListener('loadedmetadata', startPlayback);
-      video.removeEventListener('canplay', startPlayback);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('pageshow', startPlayback);
-    };
-  }, [mounted]);
-
-  // Initialiser GSAP et ScrollTrigger
-  useLayoutEffect(() => {
-    // Ne pas initialiser si pas monté
-    if (!mounted) {
-      return;
-    }
-    if (
-      !containerRef.current ||
-      !backgroundVideoRef.current ||
-      !maskGroupRef.current ||
-      typeof window === 'undefined'
-    ) {
-      return;
-    }
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      gsap.set(containerRef.current, { visibility: 'visible' });
-      return;
-    }
-
-    const container = containerRef.current;
-    const bgVideo = backgroundVideoRef.current;
-    const maskGroup = maskGroupRef.current;
-
-    const scrollDuration = 1500;
-    const finalScale = 800; // Zoom ultra-violent x800 pour traverser la ligne laser de 1.2px
-
-    const ctx = gsap.context(() => {
-      // ANTI-FLASH : Rendre visible
-      gsap.set(container, {
-        visibility: 'visible',
-      });
-
-      // Initialiser le groupe du masque avec transform-origin au centre exact (50% 50%)
-      // Le rectangle fantôme force le groupe à faire exactement 100x100, donc 50% 50% = centre absolu
-      gsap.set(maskGroup, {
-        scale: 1,
-        transformOrigin: '50% 50%',
-        willChange: 'transform',
-      });
-
-      // Vidéo de fond : visible dès le départ (elle est visible à travers les trous du masque)
-      gsap.set(bgVideo, {
-        opacity: 1,
-        scale: 1,
-        willChange: 'transform, opacity',
-      });
-
-      // Créer une Timeline avec ScrollTrigger pour une animation fluide et réactive
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container,
-          start: 'top top',
-          end: `+=${scrollDuration}`,
-          pin: true,
-          pinSpacing: true,
-          scrub: 2, // Fluidité maximale au descroll avec inertie soyeuse
-          invalidateOnRefresh: true, // FIX : Recalcule tout au changement de taille de fenêtre
-          anticipatePin: 1, // Évite les petits sauts visuels au début du pin
-          onLeave: () => {
-            // Nettoyage et verrouillage de la vidéo en plein écran à la fin
-            gsap.set(bgVideo, {
-              opacity: 1,
-              scale: 1.2,
-              willChange: 'auto',
-            });
-            gsap.set(maskGroup, { 
-              willChange: 'auto' 
-            });
-          },
-          onEnterBack: () => {
-            // Réactive l'optimisation GPU quand on remonte (descroll)
-            gsap.set(maskGroup, { willChange: 'transform' });
-            gsap.set(bgVideo, { willChange: 'transform, opacity' });
-          },
-        },
-      });
-
-      // Animer le zoom du masque avec transformOrigin verrouillé au centre (50% 50%)
-      // Le rectangle fantôme garantit que 50% 50% = centre absolu (50, 50)
-      tl.to(maskGroup, {
-        scale: finalScale,
-        transformOrigin: '50% 50%',
-        duration: 1,
-        ease: 'none', // Interpolation linéaire pour suivre le scroll
-      })
-      .to(bgVideo, {
-        scale: 1.2,
-        duration: 1,
-        ease: 'none',
-      }, 0); // Démarre en même temps que le zoom du masque
-
-      ScrollTrigger.refresh();
-    }, container);
-
-    ctxRef.current = ctx;
-
-    return () => {
-      if (ctxRef.current) {
-        ctxRef.current.revert();
-        ctxRef.current = null;
-      }
-    };
-  }, [mounted]);
-
-  // Early return si pas monté (après tous les hooks)
-  if (!mounted) {
-    return <div className="h-[100svh] w-full bg-[#FDFCF0]" />;
-  }
-
+function StaticHero() {
   return (
-    <section
-      ref={containerRef}
-      className="relative h-[100svh] w-full overflow-hidden"
-      style={{ 
-        backgroundColor: '#FDFCF0',
-        visibility: 'hidden',
-      }}
-    >
-      {/* The media stays inside the section pinned by ScrollTrigger. */}
-      <video
-        ref={backgroundVideoRef}
-        className="absolute inset-0 h-full w-full object-cover"
-        src={backgroundVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-        style={{
-          zIndex: 0,
-          opacity: 1,
-        }}
-      />
-
-      {/* SVG masque inversé */}
-      <svg
-  className="absolute inset-0 h-full w-full"
-  style={{ zIndex: 10, pointerEvents: 'none' }}
-  viewBox="0 0 100 100"
-  preserveAspectRatio="xMidYMid slice" // CHANGE CECI
->
-        <defs>
-          <mask id="portalMask" maskUnits="userSpaceOnUse">
-            {/* Fond blanc (visible) */}
-            <rect width="100%" height="100%" fill="white" />
-            
-            {/* Groupe noir (trous) */}
-            <g ref={maskGroupRef} id="mask-group" fill="black">
-              {/* Rectangle fantôme pour forcer les dimensions 100x100 */}
-              <rect width="100" height="100" fill="none" />
-              <text
-                className="portal-word"
-                x="50%"
-                y="46"
-                textAnchor="middle"
-                dominantBaseline="alphabetic"
-                fontSize={portalFontSize}
-                fontWeight="900"
-                fontFamily="system-ui, sans-serif"
-                letterSpacing="-0.05em"
-              >
-                COCHOD
-              </text>
-             {/* LE RECTANGLE : Pile au milieu (50) */}
-             <rect
-  x="0"         // Commence au bord gauche
-  y="50"        // Pile au milieu vertical
-  width="100"   // Toute la largeur du viewBox
-  height="1.2"
-  transform="translate(0, -0.6)"
-  fill="black"
-/>
-              <text
-                className="portal-word"
-                x="50%"
-                y="54"
-                textAnchor="middle"
-                dominantBaseline="hanging"
-                fontSize={portalFontSize}
-                fontWeight="900"
-                fontFamily="system-ui, sans-serif"
-                letterSpacing="-0.05em"
-              >
-                CLEMENT
-              </text>
-            </g>
-          </mask>
-        </defs>
-        
-        {/* Rectangle crème qui applique le masque */}
-        <rect width="100%" height="100%" fill="#FDFCF0" mask="url(#portalMask)" />
-      </svg>
-
-      {/* Indicateur de scroll */}
-      <div
-        className="absolute left-1/2 z-30 -translate-x-1/2"
-        style={{ bottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-sm font-medium" style={{ color: '#3A3A3A' }}>
-            Scroll
-          </span>
-          <div className="flex flex-col items-center">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="animate-bounce-arrow"
-              style={{ color: '#3A3A3A' }}
-            >
-              <path
-                d="M7 10L12 15L17 10"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
+    <section data-static-hero className="bg-cream px-6 pb-12 pt-32 text-text-dark sm:px-8 sm:pt-40">
+      <div className="mx-auto max-w-7xl">
+        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-dark">Cochod Elevate · Clément Cochod</p>
+        <h1 className="max-w-4xl text-[clamp(2.2rem,8vw,5rem)] font-semibold leading-[1.05] tracking-[-0.045em]">
+          Sites web, applications et automatisations pour votre activité.
+        </h1>
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-light sm:text-lg">
+          Je vous aide à créer votre site, simplifier vos tâches et transformer vos idées en outils utiles.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/projects" className="inline-flex min-h-12 items-center justify-center rounded-full bg-text-dark px-6 py-3 text-sm font-semibold text-cream">Voir mes projets</Link>
+          <a href="mailto:cochod.elevate@icloud.com" className="inline-flex min-h-12 items-center justify-center rounded-full border border-sand-dark px-6 py-3 text-sm font-semibold">Parlons de votre projet</a>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes bounce-arrow {
-          0%, 100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-          50% {
-            transform: translateY(8px);
-            opacity: 0.6;
-          }
-        }
-        .animate-bounce-arrow {
-          animation: bounce-arrow 2s ease-in-out infinite;
-        }
-
-      `}</style>
     </section>
   );
-};
+}
+
+const AnimatedHero = dynamic(
+  () => import('./AnimatedHeroSection').then((module) => module.HeroSection),
+  { ssr: false, loading: StaticHero }
+);
+
+export function HeroSection({ backgroundVideo }: { backgroundVideo?: string }) {
+  const desktopMotion = useDesktopMotion();
+  if (!desktopMotion) return <StaticHero />;
+  return (
+    <>
+      <h1 className="sr-only">Clément Cochod — Sites web, applications et automatisations</h1>
+      <AnimatedHero backgroundVideo={backgroundVideo} />
+    </>
+  );
+}

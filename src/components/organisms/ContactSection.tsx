@@ -9,14 +9,14 @@ export const ContactSection: React.FC = () => {
   return (
     <section className="w-full py-16 md:py-24 bg-cream">
       <div className="max-w-4xl mx-auto px-6 md:px-8">
-        <motion.div
+        <motion.div data-mobile-static
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
           className="space-y-8"
         >
-          <motion.div variants={fadeInUp} className="text-center space-y-4">
+          <motion.div data-mobile-static variants={fadeInUp} className="text-center space-y-4">
             <Text variant="h2" className="text-accent-dark">
               Contactez-moi
             </Text>
@@ -25,13 +25,13 @@ export const ContactSection: React.FC = () => {
             </Text>
           </motion.div>
 
-          <motion.div
+          <motion.div data-mobile-static
             variants={fadeInUp}
             className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-sand/50 shadow-sm"
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
               {/* Email */}
-              <motion.a
+              <motion.a data-mobile-static
                 href="mailto:cochod.elevate@icloud.com"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -62,7 +62,7 @@ export const ContactSection: React.FC = () => {
               </motion.a>
 
               {/* Téléphone */}
-              <motion.a
+              <motion.a data-mobile-static
                 href="tel:+33743700596"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -92,7 +92,7 @@ export const ContactSection: React.FC = () => {
               </motion.a>
 
               {/* LinkedIn */}
-              <motion.a
+              <motion.a data-mobile-static
                 href="https://www.linkedin.com/in/clément-cochod-506a9633b/"
                 target="_blank"
                 rel="noopener noreferrer"

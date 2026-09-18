@@ -155,14 +155,14 @@ export default function AboutPage() {
       <Header />
       
       <main className="flex-1 w-full max-w-4xl mx-auto px-6 md:px-8 py-12 md:py-16">
-        <motion.div
+        <motion.div data-mobile-static
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
           className="space-y-12"
         >
           {/* Hero Section */}
-          <motion.div variants={fadeInUp} className="text-center space-y-4">
+          <motion.div data-mobile-static variants={fadeInUp} className="text-center space-y-4">
             <Text variant="h1" className="text-accent-dark">
               À propos de moi
             </Text>
@@ -174,7 +174,7 @@ export default function AboutPage() {
           {/* Sections */}
           <div className="space-y-8">
             {sections.map((section, index) => (
-              <motion.section
+              <motion.section data-mobile-static
                 key={index}
                 variants={fadeInUp}
                 className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-sand/50 shadow-sm hover:shadow-md transition-shadow duration-300"
@@ -190,7 +190,7 @@ export default function AboutPage() {
           </div>
 
           {/* CTA Section */}
-          <motion.div
+          <motion.div data-mobile-static
             variants={fadeInUp}
             className="text-center pt-8"
           >

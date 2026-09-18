@@ -53,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="lenis lenis-smooth">
+    <html lang="fr">
       <body>
         <LenisProvider>{children}</LenisProvider>
       </body>

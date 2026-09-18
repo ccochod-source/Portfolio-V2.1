@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useDesktopMotion } from '@/hooks/useDesktopMotion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Header } from '@/components/organisms/Header';
@@ -22,7 +23,7 @@ interface ProjectDeckCardProps {
 
 function ProjectDeckCard({ project, index, total }: ProjectDeckCardProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const desktopMotion = useDesktopMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
@@ -39,12 +40,12 @@ function ProjectDeckCard({ project, index, total }: ProjectDeckCardProps) {
       id={`project-${project.id}`}
       style={{
         backgroundColor: project.color || '#F5E6D3',
-        opacity: prefersReducedMotion ? 1 : opacity,
-        scale: prefersReducedMotion ? 1 : scale,
-        y: prefersReducedMotion ? 0 : y,
+        opacity: desktopMotion ? opacity : 1,
+        scale: desktopMotion ? scale : 1,
+        y: desktopMotion ? y : 0,
         zIndex: index + 1,
       }}
-      className="sticky top-4 mb-[18svh] grid h-[calc(100svh-2rem)] min-h-[560px] max-h-[820px] w-full scroll-mt-4 origin-top overflow-hidden rounded-[1.75rem] border border-black/10 shadow-[0_24px_70px_rgba(40,34,26,0.16)] last:mb-0 md:top-6 md:h-[min(84svh,820px)] md:min-h-[500px] md:grid-cols-[1.35fr_0.85fr] md:scroll-mt-6 md:rounded-[2.5rem]"
+      className="project-deck-card sticky top-4 mb-[18svh] grid h-[calc(100svh-2rem)] min-h-[560px] max-h-[820px] w-full scroll-mt-4 origin-top overflow-hidden rounded-[1.75rem] border border-black/10 shadow-[0_24px_70px_rgba(40,34,26,0.16)] last:mb-0 md:top-6 md:h-[min(84svh,820px)] md:min-h-[500px] md:grid-cols-[1.35fr_0.85fr] md:scroll-mt-6 md:rounded-[2.5rem]"
     >
         <div className="group relative min-h-0 overflow-hidden bg-black/5">
           <Image

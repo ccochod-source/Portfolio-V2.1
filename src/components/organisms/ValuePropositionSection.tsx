@@ -56,7 +56,7 @@ export const ValuePropositionSection: React.FC = () => {
   return (
     <section className="bg-cream px-6 py-24 text-text-dark md:px-8 md:py-36" aria-labelledby="value-title">
       <div className="mx-auto max-w-7xl">
-        <motion.header
+        <motion.header data-mobile-static
           variants={reveal}
           initial="hidden"
           whileInView="visible"
@@ -83,7 +83,7 @@ export const ValuePropositionSection: React.FC = () => {
 
         <div>
           {audiences.map((audience) => (
-            <motion.article
+            <motion.article data-mobile-static
               key={audience.number}
               variants={reveal}
               initial="hidden"
@@ -124,7 +124,7 @@ export const ValuePropositionSection: React.FC = () => {
           ))}
         </div>
 
-        <motion.div
+        <motion.div data-mobile-static
           variants={reveal}
           initial="hidden"
           whileInView="visible"

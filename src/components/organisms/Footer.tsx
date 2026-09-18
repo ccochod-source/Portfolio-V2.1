@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <motion.footer
+    <motion.footer data-mobile-static
       variants={fadeInUp}
       initial="hidden"
       animate="visible"
@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-6">
         {/* Coordonnées professionnelles */}
         <div className="flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-          <motion.a
+          <motion.a data-mobile-static
             href="mailto:cochod.elevate@icloud.com"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
             </span>
           </motion.a>
 
-          <motion.a
+          <motion.a data-mobile-static
             href="tel:+33743700596"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ export const Footer: React.FC = () => {
         {/* Social Links */}
         <div className="flex items-center justify-center gap-6">
           {/* LinkedIn Icon */}
-          <motion.a
+          <motion.a data-mobile-static
             href="https://www.linkedin.com/in/clément-cochod-506a9633b/"
             target="_blank"
             rel="noopener noreferrer"
@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
           </motion.a>
 
           {/* GitHub Icon */}
-          <motion.a
+          <motion.a data-mobile-static
             href="https://github.com/ccochod-source"
             target="_blank"
             rel="noopener noreferrer"

@@ -10,14 +10,14 @@ export const Header: React.FC = () => {
   const pathname = usePathname();
 
   return (
-    <motion.header
+    <motion.header data-mobile-static
       variants={slideInLeft}
       initial="hidden"
       animate="visible"
       className="w-full bg-cream/80 px-4 py-5 backdrop-blur-sm sm:px-6 sm:py-8 md:px-8 md:py-12"
     >
       <nav className="flex items-center justify-center max-w-7xl mx-auto">
-        <motion.div
+        <motion.div data-mobile-static
           variants={slideInRight}
           initial="hidden"
           animate="visible"
