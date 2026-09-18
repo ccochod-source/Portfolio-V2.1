@@ -53,7 +53,9 @@ export const Header: React.FC = () => {
           >
             Projets
           </Link>
-          <Link href="/#guides" className={`font-medium transition-colors ${pathname?.startsWith('/guides') ? 'text-accent-dark' : 'text-text hover:text-accent-dark'}`}>Guides</Link>
+          {/* Native fragment navigation notifies the intro to skip its scroll-pinning animation. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a href="/#guides" className={`font-medium transition-colors ${pathname?.startsWith('/guides') ? 'text-accent-dark' : 'text-text hover:text-accent-dark'}`}>Guides</a>
           <Link
             href="/about"
             className={`text-base font-medium transition-colors duration-300 ${

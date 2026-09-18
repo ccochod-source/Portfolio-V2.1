@@ -21,7 +21,9 @@ export const Footer: React.FC = () => {
           <Link href="/services/creation-site-internet" className="py-2 underline underline-offset-4">Sites internet</Link>
           <Link href="/services/automatisation" className="py-2 underline underline-offset-4">Automatisations & Dust</Link>
           <Link href="/services/application-sur-mesure" className="py-2 underline underline-offset-4">Applications sur mesure</Link>
-          <Link href="/#guides" className="py-2 underline underline-offset-4">Guides pratiques</Link>
+          {/* Preserve native hash navigation so the desktop intro cannot move the target. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a href="/#guides" className="py-2 underline underline-offset-4">Guides pratiques</a>
         </nav>
         {/* Coordonnées professionnelles */}
         <div className="flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">

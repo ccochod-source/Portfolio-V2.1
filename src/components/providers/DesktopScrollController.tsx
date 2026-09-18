@@ -10,7 +10,11 @@ export default function DesktopScrollController() {
   const pathname = usePathname();
   const { scrollTo } = useSmoothScroll({ duration: 1.2, easing, smoothWheel: true });
   useEffect(() => {
-    scrollTo(0, { immediate: true });
+    const target = document.getElementById(window.location.hash.slice(1));
+    const position = target
+      ? window.scrollY + target.getBoundingClientRect().top - (parseFloat(getComputedStyle(target).scrollMarginTop) || 0)
+      : 0;
+    scrollTo(position, { immediate: true });
   }, [pathname, scrollTo]);
   return null;
 }
