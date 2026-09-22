@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useDesktopMotion } from '@/hooks/useDesktopMotion';
-import { useEffect, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 
 function subscribeToHash(callback: () => void) {
   window.addEventListener('hashchange', callback);
@@ -39,17 +39,19 @@ const AnimatedHero = dynamic(
 
 export function HeroSection({ backgroundVideo }: { backgroundVideo?: string }) {
   const desktopMotion = useDesktopMotion();
+  const [videoUnavailable, setVideoUnavailable] = useState(false);
+  const showStaticHero = useCallback(() => setVideoUnavailable(true), []);
   const hash = useSyncExternalStore(subscribeToHash, getHash, getServerHash);
   useEffect(() => {
     if (hash !== '#guides' && hash !== '#services') return;
     const frame = requestAnimationFrame(() => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'instant' }));
     return () => cancelAnimationFrame(frame);
   }, [hash]);
-  if (!desktopMotion || hash === '#guides' || hash === '#services') return <StaticHero />;
+  if (!desktopMotion || videoUnavailable || hash === '#guides' || hash === '#services') return <StaticHero />;
   return (
     <>
       <h1 className="sr-only">Clément Cochod — Sites web, applications et automatisations</h1>
-      <AnimatedHero backgroundVideo={backgroundVideo} />
+      <AnimatedHero backgroundVideo={backgroundVideo} onUnavailable={showStaticHero} />
     </>
   );
 }

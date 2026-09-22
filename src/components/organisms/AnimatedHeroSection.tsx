@@ -3,6 +3,7 @@
 import React, { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { watchHeroPlayback } from '@/lib/heroPlayback';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -10,16 +11,19 @@ if (typeof window !== 'undefined') {
 
 interface HeroSectionProps {
   backgroundVideo?: string;
+  onUnavailable: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundVideo = '/IMG_0764.mp4',
+  onUnavailable,
 }) => {
   const containerRef = useRef<HTMLElement>(null);
   const backgroundVideoRef = useRef<HTMLVideoElement>(null);
   const maskGroupRef = useRef<SVGGElement>(null);
   const ctxRef = useRef<gsap.Context | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const [portalFontSize, setPortalFontSize] = useState(18);
 
   // Rendu client pur - anti-flash
@@ -40,56 +44,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     return () => observer.disconnect();
   }, [mounted]);
 
-  // Safari peut ignorer l'autoplay si l'état muet n'est appliqué qu'après
-  // l'insertion de la vidéo dans le DOM. On force donc les propriétés natives
-  // et on retente la lecture quand la vidéo ou la page redevient disponible.
+  // Start the scroll effect only after actual playback, not just canplay.
   useEffect(() => {
     if (!mounted || !backgroundVideoRef.current) {
       return;
     }
 
-    const video = backgroundVideoRef.current;
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
-    video.setAttribute('muted', '');
-    video.setAttribute('playsinline', '');
-
-    const startPlayback = () => {
-      if (!video.paused) {
-        return;
-      }
-
-      void video.play().catch(() => {
-        // Safari peut différer la lecture jusqu'à ce que suffisamment de
-        // données soient chargées. L'événement canplay retentera ensuite.
-      });
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        startPlayback();
-      }
-    };
-
-    startPlayback();
-    video.addEventListener('loadedmetadata', startPlayback);
-    video.addEventListener('canplay', startPlayback);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('pageshow', startPlayback);
-
-    return () => {
-      video.removeEventListener('loadedmetadata', startPlayback);
-      video.removeEventListener('canplay', startPlayback);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('pageshow', startPlayback);
-    };
-  }, [mounted]);
+    return watchHeroPlayback(backgroundVideoRef.current, () => setPlaying(true), onUnavailable);
+  }, [mounted, onUnavailable]);
 
   // Initialiser GSAP et ScrollTrigger
   useLayoutEffect(() => {
     // Ne pas initialiser si pas monté
-    if (!mounted) {
+    if (!mounted || !playing) {
       return;
     }
     if (
@@ -190,7 +157,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         ctxRef.current = null;
       }
     };
-  }, [mounted]);
+  }, [mounted, playing]);
 
   // Early return si pas monté (après tous les hooks)
   if (!mounted) {
@@ -200,10 +167,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section
       ref={containerRef}
+      data-hero-playback={playing ? 'playing' : 'pending'}
       className="relative h-[100svh] w-full overflow-hidden"
       style={{ 
-        backgroundColor: '#FDFCF0',
-        visibility: 'hidden',
+        backgroundColor: '#3A3A3A',
       }}
     >
       {/* The media stays inside the section pinned by ScrollTrigger. */}
@@ -222,6 +189,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           opacity: 1,
         }}
       />
+
+      <button
+        type="button"
+        onClick={onUnavailable}
+        className="absolute bottom-6 right-6 z-40 rounded-full border border-sand-dark bg-cream px-4 py-2 text-sm text-text-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+      >
+        Passer l’introduction
+      </button>
 
       {/* SVG masque inversé */}
       <svg
