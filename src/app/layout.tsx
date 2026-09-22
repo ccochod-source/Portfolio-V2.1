@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import { LenisProvider } from '@/components/providers/LenisProvider';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body>
         <JsonLd data={organizationSchema} />
         <LenisProvider>{children}</LenisProvider>
+        <Analytics />
       </body>
     </html>
   );
