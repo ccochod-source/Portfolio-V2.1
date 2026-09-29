@@ -119,6 +119,43 @@ export default async function ProjectDetailPage({ params }: Props) {
           </div>
         </div>
 
+        {project.screenshots && project.screenshots.length > 0 && (
+          <section className="mb-12" aria-labelledby="screenshots-heading">
+            <h2 id="screenshots-heading" className="text-xl font-semibold text-text-dark mb-3">
+              Le projet en images
+            </h2>
+            <p className="text-sm text-text-light mb-6">
+              Les captures peuvent être ouvertes en grand pour consulter les détails.
+            </p>
+            <div className="space-y-8">
+              {project.screenshots.map((screenshot) => (
+                <figure key={screenshot.src} className="overflow-hidden rounded-xl border border-sand bg-white shadow-sm">
+                  <Image
+                    src={screenshot.src}
+                    alt={screenshot.alt}
+                    width={screenshot.width}
+                    height={screenshot.height}
+                    sizes="(max-width: 767px) calc(100vw - 48px), 704px"
+                    className="h-auto w-full object-contain"
+                  />
+                  <figcaption className="p-5">
+                    <h3 className="font-semibold text-text-dark">{screenshot.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-text">{screenshot.caption}</p>
+                    <a
+                      href={screenshot.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-block text-sm font-medium text-accent-dark underline underline-offset-4"
+                    >
+                      Agrandir : {screenshot.title} (nouvel onglet)
+                    </a>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+
         {project.slideshowSrcs && project.slideshowSrcs.length > 0 && (
           <ProjectSlidesModal slideshowSrcs={project.slideshowSrcs} projectTitle={project.title} />
         )}

@@ -23,6 +23,15 @@ export interface ParallaxProject {
   slug?: string;
   /** Slides PNG (exports type deck) affichées sur la fiche projet — chemins sous `/public` */
   slideshowSrcs?: readonly string[];
+  /** Captures autorisées et nettoyées pour la fiche détaillée. */
+  screenshots?: readonly {
+    src: string;
+    title: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+  }[];
 }
 
 export const parallaxProjects: ParallaxProject[] = [
@@ -185,6 +194,24 @@ export const parallaxProjects: ParallaxProject[] = [
     imageSrc: '/mirakl-hackathon.png',
     color: '#D5F0EA',
     slug: 'hackathon-mirakl',
+    screenshots: [
+      {
+        src: '/projects/mirakl-generation-emails-public.webp',
+        title: 'Préparer des e-mails personnalisés',
+        alt: 'Workflow n8n de génération d’e-mails : chargement du contexte, préparation IA, enregistrement et mise à jour du statut.',
+        caption: 'Le workflow réunit les informations du vendeur et de la marketplace, prépare plusieurs variantes d’e-mails avec l’IA, puis enregistre les résultats. Les adresses techniques ont été masquées sur cette capture.',
+        width: 2396,
+        height: 958,
+      },
+      {
+        src: '/projects/mirakl-suivi-campagnes-public.webp',
+        title: 'Suivre les réactions aux campagnes',
+        alt: 'Workflow n8n de suivi Brevo : réception des événements, mise à jour du prospect et notification Slack pour un prospect intéressé.',
+        caption: 'Ce workflow relie les événements des e-mails envoyés avec Brevo au suivi des prospects : ouvertures, clics, réponses et échecs de livraison. Il prévoit aussi une notification Slack lorsqu’un prospect est identifié comme intéressé.',
+        width: 2390,
+        height: 872,
+      },
+    ],
     link: [{ url: 'https://mirakl.vercel.app', label: 'Voir le dashboard' }],
     extraLink: {
       url: 'https://www.mirakl.com/',
