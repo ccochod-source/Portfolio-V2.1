@@ -12,29 +12,30 @@ function subscribeToHash(callback: () => void) {
 const getHash = () => window.location.hash;
 const getServerHash = () => '';
 
-function StaticHero() {
+function HeroCopy({ animated }: { animated: boolean }) {
   return (
-    <section data-static-hero className="bg-cream px-6 pb-12 pt-32 text-text-dark sm:px-8 sm:pt-40">
+    <div className={animated ? 'absolute top-[max(9rem,calc(100svh_-_25rem))] left-8 z-20 w-[min(44rem,calc(100%_-_4rem))] rounded-3xl border border-sand bg-cream/95 p-6 text-text-dark shadow-sm' : 'bg-cream px-6 pb-12 pt-36 text-text-dark sm:px-8 sm:pt-40'}>
       <div className="mx-auto max-w-7xl">
         <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-accent-dark">Cochod Elevate · Clément Cochod</p>
-        <h1 className="max-w-4xl text-[clamp(2.2rem,8vw,5rem)] font-semibold leading-[1.05] tracking-[-0.045em]">
-          Sites web, applications et automatisations pour votre activité.
+        <h1 className={animated ? 'text-[clamp(1.6rem,2.4vw,2.25rem)] font-semibold leading-tight tracking-tight' : 'max-w-4xl text-[clamp(2.2rem,7vw,4.75rem)] font-semibold leading-[1.08] tracking-tight'}>
+          Un site pour présenter votre activité. Des outils pour simplifier votre travail.
         </h1>
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-text-light sm:text-lg">
-          Je vous aide à créer votre site, simplifier vos tâches et transformer vos idées en outils utiles.
+          Sites internet · Applications sur mesure · Automatisations.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link href="/projects" className="inline-flex min-h-12 items-center justify-center rounded-full bg-text-dark px-6 py-3 text-sm font-semibold text-cream">Voir mes projets</Link>
-          <a href="mailto:cochod.elevate@icloud.com" className="inline-flex min-h-12 items-center justify-center rounded-full border border-sand-dark px-6 py-3 text-sm font-semibold">Parlons de votre projet</a>
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a href="/#contact" className="inline-flex min-h-12 items-center justify-center rounded-full bg-text-dark px-6 py-3 text-sm font-semibold text-cream">Parlons de votre projet</a>
+          <Link href="/projects" className="inline-flex min-h-12 items-center justify-center rounded-full border border-sand-dark px-6 py-3 text-sm font-semibold">Voir mes réalisations</Link>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
 const AnimatedHero = dynamic(
   () => import('./AnimatedHeroSection').then((module) => module.HeroSection),
-  { ssr: false, loading: StaticHero }
+  { ssr: false, loading: () => <div className="h-[100svh] bg-cream" /> }
 );
 
 export function HeroSection({ backgroundVideo }: { backgroundVideo?: string }) {
@@ -43,15 +44,15 @@ export function HeroSection({ backgroundVideo }: { backgroundVideo?: string }) {
   const showStaticHero = useCallback(() => setVideoUnavailable(true), []);
   const hash = useSyncExternalStore(subscribeToHash, getHash, getServerHash);
   useEffect(() => {
-    if (hash !== '#guides' && hash !== '#services') return;
+    if (!['#guides', '#services', '#contact'].includes(hash)) return;
     const frame = requestAnimationFrame(() => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'instant' }));
     return () => cancelAnimationFrame(frame);
   }, [hash]);
-  if (!desktopMotion || videoUnavailable || hash === '#guides' || hash === '#services') return <StaticHero />;
+  const animated = desktopMotion && !videoUnavailable && !['#guides', '#services', '#contact'].includes(hash);
   return (
-    <>
-      <h1 className="sr-only">Clément Cochod — Sites web, applications et automatisations</h1>
-      <AnimatedHero backgroundVideo={backgroundVideo} onUnavailable={showStaticHero} />
-    </>
+    <section className="relative bg-cream" data-static-hero={!animated || undefined}>
+      {animated ? <AnimatedHero backgroundVideo={backgroundVideo} onUnavailable={showStaticHero} /> : null}
+      <HeroCopy animated={animated} />
+    </section>
   );
 }

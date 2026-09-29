@@ -1,5 +1,7 @@
 import { payfitSlideshowUrls } from '@/data/payfitSlidesOrder';
 
+export type ProjectCategory = 'sites' | 'applications' | 'automatisations' | 'data-etudes';
+
 export interface ParallaxProject {
   id: string;
   title: string;
@@ -9,6 +11,7 @@ export interface ParallaxProject {
   longDescription?: string;
   imageSrc: string;
   category?: string;
+  categories?: readonly ProjectCategory[];
   featured?: boolean;
   imagePosition?: string;
   color?: string;
@@ -35,6 +38,7 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: 'tahiti',
+    categories: ['applications', 'automatisations', 'data-etudes'],
     title: 'Brasserie de Tahiti',
     category: 'Stage · 5 applications métiers',
     featured: true,
@@ -48,6 +52,7 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: 'auralife',
+    categories: ['sites', 'automatisations'],
     title: 'Auralife',
     category: 'Site client · Administration & automatisation',
     featured: true,
@@ -62,6 +67,7 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: 'lorene',
+    categories: ['applications'],
     title: 'Écrire son livre',
     category: 'Application client · IA éditoriale',
     featured: true,
@@ -75,6 +81,7 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: 'ping-pang',
+    categories: ['data-etudes'],
     title: 'Ping Pang',
     category: 'Architecture data · Sport',
     featured: true,
@@ -88,6 +95,7 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: 'galaad',
+    categories: ['applications'],
     title: 'Bizroast',
     category: 'SaaS · Analyse business par IA',
     featured: false,
@@ -101,6 +109,7 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: 'omi',
+    categories: ['applications'],
     title: 'Omi',
     category: 'Produit · Organisation familiale',
     featured: false,
@@ -114,6 +123,7 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: 'ar-plate',
+    categories: ['data-etudes'],
     title: 'AR Plate',
     category: 'Étude de marché · FoodTech',
     featured: false,
@@ -127,7 +137,9 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: '3',
-    title: 'PayFit — plateforme d’articles IA (EEAT + SEO)',
+    categories: ['applications'],
+    category: 'Hackathon scolaire · Rédaction assistée',
+    title: 'PayFit — rédaction d’articles assistée par IA',
     description:
       'Plateforme d’articles IA pour contenus paie & RH au standard EEAT vérifiés (Dust, React, Vercel) : génération rapide sans sacrifier légalité ni SEO — hackathon, 1er prix (solo).',
     longDescription:
@@ -144,6 +156,8 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: '6',
+    categories: ['applications'],
+    category: 'Projet étudiant · Réseau social de portfolios',
     title: 'Eugeniagram',
     description:
       'Réseau social de portfolios pour étudiants (UX type Instagram) : fil d’actualité, publications de projets et vitrine collective pour l’école et les recruteurs.',
@@ -161,7 +175,9 @@ export const parallaxProjects: ParallaxProject[] = [
   },
   {
     id: '7',
-    title: 'Hackaton Mirakl',
+    categories: ['automatisations'],
+    category: 'Hackathon · Prospection automatisée',
+    title: 'Hackathon Mirakl',
     description:
       'Hackathon Mirakl : pipeline complet scraping → leads enrichis → emails IA et séquences outbound, avec dashboard Vercel et pitch — 1ers sur le use case, 2e au général, API OpenAI 5 000 €.',
     longDescription:

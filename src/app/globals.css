@@ -111,7 +111,6 @@ html.lenis {
   }
 
   .project-deck-card > :first-child { aspect-ratio: 16 / 9; }
-  .project-deck-card h2 { font-size: clamp(1.75rem, 6vw, 2.5rem); overflow-wrap: anywhere; }
+  .project-deck-card h2 { font-size: clamp(1.4rem, 5vw, 2rem); line-height: 1.15; overflow-wrap: anywhere; }
   .project-deck-card a { min-height: 44px; }
-  .project-deck-card .line-clamp-4 { display: block; -webkit-line-clamp: unset; overflow: visible; }
 }

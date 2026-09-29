@@ -94,7 +94,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               alt={project.title}
               fill
               className="object-contain p-4"
-              sizes="100vw"
+              sizes="(max-width: 767px) calc(100vw - 48px), 704px"
               priority
             />
           </div>
@@ -231,6 +231,11 @@ export default async function ProjectDetailPage({ params }: Props) {
             const service = getService(serviceSlug);
             return service ? <li key={serviceSlug}><Link href={`/services/${serviceSlug}`} className="inline-block py-2 font-semibold underline underline-offset-4">{service.label} →</Link></li> : null;
           })}</ul>
+          <p className="mt-5 leading-relaxed">Expliquez-moi ce qui vous prend du temps ou le site que vous souhaitez créer.</p>
+          <div className="mt-4 flex flex-wrap gap-4">
+            <a href="mailto:cochod.elevate@icloud.com" className="break-all rounded-full bg-text-dark px-5 py-3 font-semibold text-cream">Parlons de votre projet</a>
+            <a href="tel:+33743700596" className="rounded-full border border-sand-dark px-5 py-3 font-semibold">07 43 70 05 96</a>
+          </div>
         </section>
       </main>
 

@@ -7,7 +7,7 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 export const ContactSection: React.FC = () => {
   return (
-    <section className="w-full py-16 md:py-24 bg-cream">
+    <section id="contact" className="w-full scroll-mt-32 py-16 md:py-24 bg-cream">
       <div className="max-w-4xl mx-auto px-6 md:px-8">
         <motion.div data-mobile-static
           variants={staggerContainer}
@@ -125,5 +125,4 @@ export const ContactSection: React.FC = () => {
     </section>
   );
 };
-
 

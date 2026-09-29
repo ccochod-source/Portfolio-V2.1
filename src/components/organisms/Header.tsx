@@ -67,6 +67,9 @@ export const Header: React.FC = () => {
           >
             À propos
           </Link>
+          {/* Native fragment navigation notifies the intro before scrolling. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a href="/#contact" className="rounded-full bg-text-dark px-4 font-semibold text-cream">Contact</a>
         </motion.div>
       </nav>
     </motion.header>

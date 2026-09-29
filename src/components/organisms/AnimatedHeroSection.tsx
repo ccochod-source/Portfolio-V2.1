@@ -78,7 +78,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     const bgVideo = backgroundVideoRef.current;
     const maskGroup = maskGroupRef.current;
 
-    const scrollDuration = 1500;
+    const scrollDuration = 800;
     const finalScale = 800; // Zoom ultra-violent x800 pour traverser la ligne laser de 1.2px
 
     const ctx = gsap.context(() => {
@@ -200,6 +200,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       {/* SVG masque inversé */}
       <svg
+  aria-hidden="true"
   className="absolute inset-0 h-full w-full"
   style={{ zIndex: 10, pointerEvents: 'none' }}
   viewBox="0 0 100 100"

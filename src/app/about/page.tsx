@@ -11,6 +11,10 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 export default function AboutPage() {
   const sections = [
     {
+      title: 'Ce que je peux faire pour votre activité',
+      content: <p>Avec Cochod Elevate, je crée des sites internet, des applications sur mesure et des automatisations pour les indépendants et les entreprises. Je pars de votre besoin : présenter vos services, retrouver vos informations ou simplifier une tâche répétitive. Je construis ensuite une solution adaptée, avec des explications pour vous permettre de l’utiliser.</p>,
+    },
+    {
       title: 'Parcours académique',
       content: (
         <>
@@ -167,7 +171,7 @@ export default function AboutPage() {
               À propos de moi
             </Text>
             <Text variant="body" className="text-text-light max-w-2xl mx-auto">
-              Découvrez mon parcours, mes compétences et ma vision
+              Créateur de Cochod Elevate : des sites et des outils adaptés à votre travail.
             </Text>
           </motion.div>
 
@@ -195,7 +199,7 @@ export default function AboutPage() {
             className="text-center pt-8"
           >
             <Link
-              href="/"
+              href="/projects"
               className="inline-block px-6 py-3 bg-accent text-text-dark rounded-lg hover:bg-sand transition-colors duration-300 font-medium"
             >
               Retour aux projets
