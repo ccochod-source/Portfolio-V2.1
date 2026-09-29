@@ -13,12 +13,12 @@ const nextConfig: NextConfig = {
     ] }];
   },
   async redirects() {
-    return [{
+    return ['portfolio-v2-1-xi.vercel.app', 'portfolio-v2-1-9bch.vercel.app'].map(host => ({
       source: '/:path*',
-      has: [{ type: 'host', value: 'portfolio-v2-1-xi.vercel.app' }],
+      has: [{ type: 'host' as const, value: host }],
       destination: 'https://www.cochodelevate.com/:path*',
       permanent: true,
-    }];
+    }));
   },
   images: {
     formats: ['image/avif', 'image/webp'],

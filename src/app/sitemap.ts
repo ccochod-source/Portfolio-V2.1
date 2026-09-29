@@ -32,6 +32,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const contentPages: MetadataRoute.Sitemap = [
+    { url: `${siteUrl}/mentions-legales` },
+    { url: `${siteUrl}/confidentialite` },
     ...services.map(service => ({ url: `${siteUrl}/services/${service.slug}` })),
     ...guides.map(guide => ({ url: `${siteUrl}/guides/${guide.slug}` })),
   ];

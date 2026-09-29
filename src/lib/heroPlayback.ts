@@ -9,7 +9,10 @@ export function watchHeroPlayback(
   let disposed = false;
   let failed = false;
   let pending = false;
+  let inView = true;
+  let hasPlayed = false;
   let timer: ReturnType<typeof setTimeout> | undefined;
+  const visible = () => inView && document.visibilityState === 'visible';
   const clearDeadline = () => clearTimeout(timer);
   const fail = () => {
     if (disposed || failed) return;
@@ -19,32 +22,34 @@ export function watchHeroPlayback(
   };
   const armDeadline = () => {
     clearDeadline();
-    if (document.visibilityState === 'visible') timer = setTimeout(() => {
+    if (inView && (!hasPlayed || visible())) timer = setTimeout(() => {
       // Safari may intentionally pause an off-screen video. Do not remove
       // the pinned section under a visitor already reading the content below.
       const rect = video.getBoundingClientRect();
-      if (rect.bottom > 0 && rect.top < window.innerHeight) fail();
+      if (inView && (!hasPlayed || (visible() && rect.bottom > 0 && rect.top < window.innerHeight))) fail();
     }, timeoutMs);
   };
   const playing = () => {
     if (disposed || failed) return;
+    hasPlayed = true;
     clearDeadline();
     onPlaying();
   };
   const start = () => {
-    if (disposed || failed || pending || document.visibilityState !== 'visible') return;
+    if (disposed || failed || pending || !visible()) return;
     if (!video.paused) return;
     pending = true;
     void video.play().catch((error: unknown) => {
-      if (disposed || failed) return;
+      if (disposed || failed || !visible()) return;
       // AbortError can happen on a normal background/foreground transition.
       // The deadline still bounds a promise that never resolves.
       if (!(error instanceof DOMException && error.name === 'AbortError')) fail();
     }).finally(() => { pending = false; });
   };
   const resume = () => {
-    if (document.visibilityState !== 'visible') {
-      clearDeadline();
+    if (!visible()) {
+      if (hasPlayed || !inView) clearDeadline();
+      video.pause();
       return;
     }
     if (video.paused || video.readyState < 3) {
@@ -67,11 +72,19 @@ export function watchHeroPlayback(
   video.addEventListener('canplay', start);
   document.addEventListener('visibilitychange', resume);
   window.addEventListener('pageshow', resume);
+  const observer = new IntersectionObserver(([entry]) => {
+    inView = entry.isIntersecting;
+    // Pausing is intentional off-screen; never reset currentTime or remove
+    // the pinned section while the visitor is reading the rest of the page.
+    resume();
+  });
+  observer.observe(video);
   armDeadline();
   if (!video.paused && video.readyState >= 3) playing();
   else start();
   return () => {
     disposed = true;
+    observer.disconnect();
     clearDeadline();
     video.removeEventListener('playing', playing);
     video.removeEventListener('error', fail);

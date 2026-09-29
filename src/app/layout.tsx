@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SiteMeasurements } from '@/components/providers/SiteMeasurements';
 import './globals.css';
 import { LenisProvider } from '@/components/providers/LenisProvider';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -41,10 +40,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body>
+        <noscript><style>{`[data-mobile-static] { opacity: 1 !important; transform: none !important; visibility: visible !important; }`}</style></noscript>
         <JsonLd data={organizationSchema} />
         <LenisProvider>{children}</LenisProvider>
-        <Analytics />
-        <SpeedInsights />
+        <SiteMeasurements />
       </body>
     </html>
   );

@@ -102,7 +102,7 @@ export function ProjectSlidesModal({ slideshowSrcs, projectTitle }: ProjectSlide
             aria-modal="true"
             aria-labelledby={titleId}
             aria-describedby={navHintId}
-            className="m-auto h-[min(90svh,900px)] w-[calc(100%-1.5rem)] max-w-4xl flex-col rounded-2xl border border-sand/80 bg-cream p-0 text-text-dark shadow-xl outline-none open:flex backdrop:bg-black/55 backdrop:backdrop-blur-sm"
+            className="m-auto h-[min(90svh,900px)] w-[calc(100%_-_1.5rem)] max-w-4xl flex-col rounded-2xl border border-sand/80 bg-cream p-0 text-text-dark shadow-xl outline-none open:flex backdrop:bg-black/55 backdrop:backdrop-blur-sm"
             tabIndex={-1}
             onCancel={(event) => { event.preventDefault(); onClose(); }}
             onClick={(event) => { if (event.target === event.currentTarget) {

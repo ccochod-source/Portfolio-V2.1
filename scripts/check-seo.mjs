@@ -12,7 +12,7 @@ const descriptions = new Set();
 const internalPages = new Set();
 const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
-assert.equal(urls.length, 21, '14 original pages + 3 services + 4 guides');
+assert.equal(urls.length, 23, '21 existing pages + 2 legal information pages');
 assert.equal(new Set(urls).size, urls.length, 'no sitemap duplicates');
 const report = [];
 for (const url of urls) {
@@ -72,9 +72,11 @@ if (base.startsWith('http://localhost')) {
     });
     req.on('error', reject); req.end();
   });
-  const redirect = await hostRequest('portfolio-v2-1-xi.vercel.app');
-  assert.equal(redirect.status, 308);
-  assert.equal(redirect.location, `${canonicalOrigin}/projects/auralife?test=seo`);
+  for (const host of ['portfolio-v2-1-xi.vercel.app', 'portfolio-v2-1-9bch.vercel.app']) {
+    const redirect = await hostRequest(host);
+    assert.equal(redirect.status, 308);
+    assert.equal(redirect.location, `${canonicalOrigin}/projects/auralife?test=seo`);
+  }
   const preview = await hostRequest('portfolio-preview-example.vercel.app');
   assert.equal(preview.status, 200, 'preview is not redirected');
 }

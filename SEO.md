@@ -12,28 +12,26 @@
 ## Contrôles de publication
 
 1. Exécuter `npm run build` puis `npm run start -- --hostname localhost --port 3004`.
-2. Exécuter `npm run check:seo`. Le script contrôle les 21 pages, les métadonnées uniques, les images de partage, les liens internes, le sitemap, les données structurées, les contacts et les erreurs 404.
+2. Exécuter `npm run check:seo`. Le script contrôle les 23 pages (21 existantes et 2 pages légales), les métadonnées uniques, les images de partage, les liens internes, le sitemap, les données structurées, les contacts et les erreurs 404.
 3. Vérifier également le site publié avec `CHECK_URL=https://www.cochodelevate.com npm run check:seo`.
 4. Tester visuellement le menu, les services, les guides, les projets et le contact à 320 et 390 px, puis sur ordinateur. Les animations restent désactivées sur les appareils tactiles et en réduction de mouvement.
-5. Vérifier que l’ancien domaine public Vercel redirige en 308 en conservant le chemin et les paramètres. La règle porte uniquement sur `portfolio-v2-1-xi.vercel.app`, pas sur toutes les prévisualisations.
+5. Vérifier les redirections 308 des deux alias publics `portfolio-v2-1-xi.vercel.app` et `portfolio-v2-1-9bch.vercel.app`, en conservant chemin et paramètres. Les prévisualisations ne sont pas redirigées. L’ancien alias xi a été rattaché de nouveau au projet le 29 septembre 2026.
 
 Les tests ne prouvent pas l’indexation réelle par Google. Les données structurées décrivent le contenu, sans garantir d’enrichissement des résultats. Aucun faux `lastModified` n’est envoyé dans le sitemap.
 
-## Search Console : étape dépendant du compte propriétaire
+## Search Console : situation vérifiée le 29 septembre 2026
 
-Le propriétaire a indiqué le 18 septembre 2026 que le site n’est pas encore ajouté. Aucun accès Search Console ni jeton de validation n’est disponible dans ce projet. Ne pas inventer de métriques de trafic ou de classement.
+La propriété est configurée et le sitemap était accepté le 28 septembre, avec 21 pages découvertes avant ajout des pages légales. « Découvertes » ne signifie pas « indexées ». Ne pas recréer la propriété ni resoumettre inutilement le sitemap.
 
-1. Ouvrir https://search.google.com/search-console avec le compte Google du propriétaire.
-2. Ajouter une propriété **Domaine** : `cochodelevate.com` (sans protocole).
-3. Copier exactement l’enregistrement TXT fourni par Google et l’ajouter chez le fournisseur DNS, sans modifier les enregistrements existants. Cette valeur propre au compte doit être fournie avant toute intervention DNS.
-4. Valider la propriété, puis soumettre `https://www.cochodelevate.com/sitemap.xml`.
-5. Inspecter l’accueil, les trois services et les quatre guides ; vérifier l’exploration et l’adresse canonique sélectionnée. Demander l’indexation des pages clés sans répéter inutilement les demandes.
+L’audit du 29 septembre relevait 3 clics, 5 impressions, un CTR de 60 % et une position moyenne de 1 sur la période affichée. Cet échantillon est trop faible pour conclure à une visibilité commerciale ou hors marque. Conserver les dates et filtres de chaque futur relevé pour rendre les comparaisons valides.
+
+Inspecter l’accueil, les trois services et les quatre guides ; vérifier l’exploration et la canonical sélectionnée. Demander l’indexation des pages clés seulement si nécessaire, sans répéter les demandes.
 
 Sources : [validation de propriété](https://support.google.com/webmasters/answer/9008080?hl=fr), [rapport sur les sitemaps](https://support.google.com/webmasters/answer/7451001?hl=fr).
 
 ## Suivi manuel à 30, 60 et 90 jours
 
-Les points de contrôle sont prévus les 18 octobre, 17 novembre et 17 décembre 2026, à décaler si la validation du domaine intervient plus tard. Aucun suivi automatique n’est activé sans accès aux données.
+Après les améliorations du 29 septembre, les points de contrôle manuels sont prévus les 29 octobre, 28 novembre et 28 décembre 2026. Aucune automatisation récurrente n’est créée.
 
 À chaque point, relever la période, les pages indexées, les impressions, les clics, le CTR et les positions par requête et par offre. Séparer les recherches de marque (Cochod Elevate / Clément Cochod et variantes) des autres recherches. Comparer des périodes de durée égale ; ne pas confondre absence de données et zéro trafic.
 

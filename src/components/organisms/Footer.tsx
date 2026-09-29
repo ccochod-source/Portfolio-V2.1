@@ -25,6 +25,10 @@ export const Footer: React.FC = () => {
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#guides" className="py-2 underline underline-offset-4">Guides pratiques</a>
         </nav>
+        <nav aria-label="Informations légales" className="flex flex-wrap justify-center gap-6 text-sm">
+          <Link href="/mentions-legales" className="py-2 underline underline-offset-4">Mentions légales</Link>
+          <Link href="/confidentialite" className="py-2 underline underline-offset-4">Confidentialité</Link>
+        </nav>
         {/* Coordonnées professionnelles */}
         <div className="flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
           <motion.a data-mobile-static
