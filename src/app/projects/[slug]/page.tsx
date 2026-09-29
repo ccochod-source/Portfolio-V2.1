@@ -79,7 +79,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     <div className="min-h-screen bg-cream flex flex-col">
       <Header />
 
-      <main className="flex-1 w-full max-w-3xl mx-auto px-6 md:px-8 py-10 md:py-14 pb-24">
+      <main id="main-content" tabIndex={-1} className="flex-1 w-full max-w-3xl mx-auto px-6 md:px-8 py-10 md:py-14 pb-24">
         <Breadcrumbs items={[{ name: 'Accueil', path: '/' }, { name: 'Projets', path: '/projects' }, { name: project.title, path: `/projects/${slug}` }]} />
 
         <div

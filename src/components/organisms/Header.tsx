@@ -16,6 +16,7 @@ export const Header: React.FC = () => {
       animate="visible"
       className="w-full bg-cream/80 px-4 py-5 backdrop-blur-sm sm:px-6 sm:py-8 md:px-8 md:py-12"
     >
+      <a href="#main-content" className="skip-link">Aller au contenu</a>
       <nav aria-label="Navigation principale" className="flex items-center justify-center max-w-7xl mx-auto">
         <motion.div data-mobile-static
           variants={slideInRight}

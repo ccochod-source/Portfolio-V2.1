@@ -30,45 +30,45 @@ export default function AboutPage() {
 
           <div className="space-y-5">
             <div>
-              <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
+              <h3 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
                 Applications web &amp; outils métiers
-              </h4>
+              </h3>
               <p className="mb-3">
                 Je conçois des interfaces responsives, des espaces d’administration, des formulaires dynamiques, des systèmes de rôles et des exports adaptés au travail réel des équipes. Cette compétence est visible dans les <Link href="/projects/brasserie-de-tahiti" className="font-semibold text-accent-dark hover:text-accent">cinq applications de la Brasserie de Tahiti</Link>, le site administrable <Link href="/projects/auralife" className="font-semibold text-accent-dark hover:text-accent">Auralife</Link> et l’application privée <Link href="/projects/ecrire-son-livre" className="font-semibold text-accent-dark hover:text-accent">Écrire son livre</Link>.
               </p>
             </div>
 
             <div>
-              <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
+              <h3 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
                 Data, bases de données &amp; qualité
-              </h4>
+              </h3>
               <p className="mb-3">
                 Je modélise les données, prépare les imports, nettoie les historiques et ajoute des contrôles pour éviter que l’interface repose sur une base fragile. À la Brasserie de Tahiti, cela a notamment concerné dix ans d’historique, 22&nbsp;000 entrées carburant et environ 400 anomalies détectées. Sur <Link href="/projects/ping-pang" className="font-semibold text-accent-dark hover:text-accent">Ping Pang</Link>, j’ai travaillé sur Supabase, les règles de sécurité, le rapprochement de données multi-sources et un moteur de classement Glicko-2 testé. L’<Link href="/projects/analyse-accidentologie" className="font-semibold text-accent-dark hover:text-accent">analyse Accidentologie</Link> montre mon travail de lecture, d’agrégation et de restitution de données ouvertes.
               </p>
             </div>
 
             <div>
-              <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
+              <h3 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
                 Automatisation, API &amp; intégrations
-              </h4>
+              </h3>
               <p className="mb-3">
                 Je construis des workflows avec Make, n8n, des webhooks et des API pour supprimer les actions répétitives et relier plusieurs services. Exemples&nbsp;: relance automatique après rendez-vous pour <Link href="/projects/auralife" className="font-semibold text-accent-dark hover:text-accent">Auralife</Link>, chaîne collecte → enrichissement → messages pour le <Link href="/projects/hackathon-mirakl" className="font-semibold text-accent-dark hover:text-accent">hackathon Mirakl</Link>, et intégration ITSM avec extraction de contrats PDF pendant mon stage.
               </p>
             </div>
 
             <div>
-              <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
+              <h3 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
                 IA appliquée à un usage précis
-              </h4>
+              </h3>
               <p className="mb-3">
                 J’intègre l’IA comme une étape contrôlée d’un produit&nbsp;: recherche RAG sur plus de 16&nbsp;000 pages documentaires, transcription audio, assistant contextualisé, vérification factuelle, extraction de documents et génération structurée. Ces usages sont présentés dans <Link href="/projects/brasserie-de-tahiti" className="font-semibold text-accent-dark hover:text-accent">Brasserie de Tahiti</Link>, <Link href="/projects/ecrire-son-livre" className="font-semibold text-accent-dark hover:text-accent">Écrire son livre</Link>, <Link href="/projects/payfit-plateforme-articles-ia" className="font-semibold text-accent-dark hover:text-accent">PayFit</Link> et <Link href="/projects/bizroast" className="font-semibold text-accent-dark hover:text-accent">Bizroast</Link>. Je sépare autant que possible génération, contrôle et validation humaine.
               </p>
             </div>
 
             <div>
-              <h4 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
+              <h3 className="text-base font-semibold text-text-dark mb-2 tracking-tight">
                 Cadrage produit &amp; validation
-              </h4>
+              </h3>
               <p>
                 Avant de développer, je peux clarifier le problème, conduire des entretiens, classer les risques et définir une première version testable. Pour <Link href="/projects/ar-plate" className="font-semibold text-accent-dark hover:text-accent">AR Plate</Link>, j’ai mené huit entretiens, testé quatre hypothèses et préparé un plan pilote. Les projets <Link href="/projects/omi" className="font-semibold text-accent-dark hover:text-accent">Omi</Link> et <Link href="/projects/bizroast" className="font-semibold text-accent-dark hover:text-accent">Bizroast</Link> montrent aussi mon travail de priorisation, de parcours utilisateur et de définition de MVP.
               </p>
@@ -154,7 +154,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-cream flex flex-col">
       <Header />
       
-      <main className="flex-1 w-full max-w-4xl mx-auto px-6 md:px-8 py-12 md:py-16">
+      <main id="main-content" tabIndex={-1} className="flex-1 w-full max-w-4xl mx-auto px-6 md:px-8 py-12 md:py-16">
         <motion.div data-mobile-static
           variants={staggerContainer}
           initial="hidden"
@@ -196,7 +196,7 @@ export default function AboutPage() {
           >
             <Link
               href="/"
-              className="inline-block px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent-dark transition-colors duration-300 font-medium"
+              className="inline-block px-6 py-3 bg-accent text-text-dark rounded-lg hover:bg-sand transition-colors duration-300 font-medium"
             >
               Retour aux projets
             </Link>

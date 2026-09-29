@@ -110,7 +110,7 @@ export default function ProjectsPage() {
     <div className="min-h-screen bg-cream">
       <Header />
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section className="mx-auto flex min-h-[62svh] w-full max-w-7xl flex-col justify-center px-6 pb-20 pt-8 md:px-8 md:pb-28">
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.22em] text-accent-dark">
             Sélection · {projects.length} projets
@@ -177,7 +177,7 @@ export default function ProjectsPage() {
           <div className="mt-12 text-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center rounded-full bg-accent px-7 py-3 font-medium text-white transition-colors hover:bg-accent-dark"
+              className="inline-flex items-center justify-center rounded-full bg-accent px-7 py-3 font-medium text-text-dark transition-colors hover:bg-sand"
             >
               Retour à l’accueil
             </Link>

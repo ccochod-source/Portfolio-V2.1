@@ -29,7 +29,7 @@ export default async function CanvaEmbedPage({ searchParams }: Props) {
   return (
     <div className="min-h-screen bg-cream flex flex-col">
       <Header />
-      <div className="flex-1 flex flex-col w-full max-w-3xl mx-auto px-4 md:px-8 py-6 md:py-10">
+      <main id="main-content" tabIndex={-1} className="flex-1 flex flex-col w-full max-w-3xl mx-auto px-4 md:px-8 py-6 md:py-10">
         <Link
           href="/projects"
           className="text-sm font-medium text-text-dark hover:text-accent-dark transition-colors inline-flex items-center gap-2 mb-8"
@@ -47,7 +47,7 @@ export default async function CanvaEmbedPage({ searchParams }: Props) {
             href={decoded}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 rounded-lg bg-accent text-white font-medium hover:bg-accent-dark transition-colors shadow-sm"
+            className="inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 rounded-lg bg-accent text-text-dark font-medium hover:bg-sand transition-colors shadow-sm"
           >
             Ouvrir la présentation sur Canva
           </a>
@@ -78,7 +78,7 @@ export default async function CanvaEmbedPage({ searchParams }: Props) {
             </div>
           </div>
         </details>
-      </div>
+      </main>
       <Footer />
     </div>
   );

@@ -50,8 +50,9 @@ html.lenis {
 
 /* Focus states pour accessibilité */
 *:focus-visible {
-  outline: 2px solid #D4A574;
-  outline-offset: 2px;
+  outline: 3px solid #222222 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 5px #FDFCF0;
   border-radius: 2px;
 }
 
@@ -78,8 +79,11 @@ html.lenis {
 /* Sélection de texte */
 ::selection {
   background-color: #D4A574;
-  color: #FDFCF0;
+  color: #222222;
 }
+
+.skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 200; transform: translateY(-200%); padding: .75rem 1rem; background: #222; color: #FDFCF0; }
+.skip-link:focus { transform: none; }
 
 /* Native scrolling and fully visible content on touch devices. These rules
    also apply before hydration, so an animation cannot hide mobile content. */

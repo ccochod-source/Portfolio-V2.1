@@ -13,6 +13,7 @@ export function ProjectSlidesModal({ slideshowSrcs, projectTitle }: ProjectSlide
   const [open, setOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
   const navHintId = useId();
 
@@ -28,6 +29,9 @@ export function ProjectSlidesModal({ slideshowSrcs, projectTitle }: ProjectSlide
 
   useEffect(() => {
     if (!open) return;
+    const trigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const dialog = dialogRef.current;
+    dialog?.showModal();
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     closeBtnRef.current?.focus();
@@ -52,6 +56,8 @@ export function ProjectSlidesModal({ slideshowSrcs, projectTitle }: ProjectSlide
     return () => {
       document.body.style.overflow = prevOverflow;
       document.removeEventListener('keydown', onKey);
+      dialog?.close();
+      trigger?.focus({ preventScroll: true });
     };
   }, [open, onClose, slideshowSrcs.length]);
 
@@ -81,21 +87,18 @@ export function ProjectSlidesModal({ slideshowSrcs, projectTitle }: ProjectSlide
       </Button>
 
       {open && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 md:p-6" role="presentation">
-          <button
-            type="button"
-            className="absolute inset-0 z-[100] bg-black/55 backdrop-blur-[2px]"
-            aria-label="Fermer la présentation"
-            onClick={onClose}
-          />
-          <div
-            role="dialog"
+          <dialog
+            ref={dialogRef}
             aria-modal="true"
             aria-labelledby={titleId}
             aria-describedby={navHintId}
-            className="relative z-[101] flex h-[min(90vh,_900px)] w-full max-w-4xl flex-col rounded-2xl border border-sand/80 bg-cream shadow-xl outline-none"
+            className="m-auto h-[min(90svh,900px)] w-[calc(100%-1.5rem)] max-w-4xl flex-col rounded-2xl border border-sand/80 bg-cream p-0 text-text-dark shadow-xl outline-none open:flex backdrop:bg-black/55 backdrop:backdrop-blur-sm"
             tabIndex={-1}
-            onMouseDown={(e) => e.stopPropagation()}
+            onCancel={(event) => { event.preventDefault(); onClose(); }}
+            onClick={(event) => { if (event.target === event.currentTarget) {
+              const rect = event.currentTarget.getBoundingClientRect();
+              if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) onClose();
+            } }}
           >
             <header className="flex shrink-0 items-center justify-between gap-4 border-b border-sand/60 px-4 py-3 md:px-6">
               <h3 id={titleId} className="text-base font-semibold text-text-dark truncate">
@@ -153,8 +156,7 @@ export function ProjectSlidesModal({ slideshowSrcs, projectTitle }: ProjectSlide
                 Suivante →
               </button>
             </footer>
-          </div>
-        </div>
+          </dialog>
       )}
     </section>
   );

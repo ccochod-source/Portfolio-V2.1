@@ -11,13 +11,14 @@ export const metadata = pageMetadata('Sites internet, applications et automatisa
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-cream" style={{ backgroundColor: '#FDFCF0' }}>
+    <div className="min-h-screen bg-cream" style={{ backgroundColor: '#FDFCF0' }}>
       {/* Header avec z-index élevé pour être visible au-dessus du Hero */}
       <div className="fixed top-0 left-0 right-0 z-50">
         <Header />
       </div>
 
       {/* Hero Section avec effet Portal - Pin & Zoom */}
+      <main id="main-content" tabIndex={-1}>
       <HeroSection />
 
       <ServicesSection />
@@ -29,9 +30,10 @@ export default function Home() {
 
       {/* Section de contact */}
       <ContactSection />
+      </main>
 
       {/* Footer */}
       <Footer />
-    </main>
+    </div>
   );
 }

@@ -17,7 +17,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path: string }[]
 
 export function EditorialFrame({ children }: { children: React.ReactNode }) {
   return <div className="min-h-screen bg-cream text-text-dark"><Header />
-    <main className="mx-auto max-w-5xl px-5 py-8 sm:px-8 md:py-14">{children}</main><Footer />
+    <main id="main-content" tabIndex={-1} className="mx-auto max-w-5xl px-5 py-8 sm:px-8 md:py-14">{children}</main><Footer />
   </div>;
 }
 

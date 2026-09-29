@@ -19,9 +19,9 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variantStyles = {
     primary:
-      'bg-accent text-cream hover:bg-accent-dark active:scale-95 shadow-sm hover:shadow-md',
+      'bg-accent text-text-dark hover:bg-sand active:scale-95 shadow-sm hover:shadow-md',
     secondary:
-      'bg-transparent border-2 border-accent text-accent-dark hover:bg-accent hover:text-cream active:scale-95',
+      'bg-transparent border-2 border-accent text-text-dark hover:bg-accent active:scale-95',
     tertiary:
       'bg-sand-light text-text hover:bg-sand active:scale-95 shadow-sm hover:shadow-md',
   };
@@ -41,4 +41,3 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
-
