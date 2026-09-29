@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
   return (
     <motion.footer data-mobile-static
       variants={fadeInUp}
-      initial="hidden"
+      initial={false}
       animate="visible"
       className="w-full py-8 mt-16 border-t border-sand"
     >
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
         <div className="flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
           <motion.a data-mobile-static
             href="mailto:cochod.elevate@icloud.com"
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             whileHover={{ y: -2 }}
@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
 
           <motion.a data-mobile-static
             href="tel:+33743700596"
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08 }}
             whileHover={{ y: -2 }}
@@ -69,7 +69,7 @@ export const Footer: React.FC = () => {
             href="https://www.linkedin.com/in/clément-cochod-506a9633b/"
             target="_blank"
             rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             whileHover={{ 
@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
             href="https://github.com/ccochod-source"
             target="_blank"
             rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             whileHover={{ 

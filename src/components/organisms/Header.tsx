@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
   return (
     <motion.header data-mobile-static
       variants={slideInLeft}
-      initial="hidden"
+      initial={false}
       animate="visible"
       className="w-full bg-cream/80 px-4 py-5 backdrop-blur-sm sm:px-6 sm:py-8 md:px-8 md:py-12"
     >
@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
       <nav aria-label="Navigation principale" className="flex items-center justify-center max-w-7xl mx-auto">
         <motion.div data-mobile-static
           variants={slideInRight}
-          initial="hidden"
+          initial={false}
           animate="visible"
           className="relative flex flex-wrap items-center justify-center gap-x-3 gap-y-1 sm:gap-x-6 [&>a]:inline-flex [&>a]:min-h-11 [&>a]:items-center [&>a]:text-sm sm:[&>a]:text-base"
         >

@@ -3,30 +3,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Text } from '@/components/atoms/Text';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 export const ContactSection: React.FC = () => {
   return (
     <section id="contact" className="w-full scroll-mt-32 py-16 md:py-24 bg-cream">
       <div className="max-w-4xl mx-auto px-6 md:px-8">
-        <motion.div data-mobile-static
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="space-y-8"
-        >
-          <motion.div data-mobile-static variants={fadeInUp} className="text-center space-y-4">
+        <div className="space-y-8">
+          <div className="text-center space-y-4">
             <Text variant="h2" className="text-accent-dark">
               Contactez-moi
             </Text>
             <Text variant="body" className="text-text-light max-w-2xl mx-auto">
               Vous avez un besoin concret, une idée d'application ou des données à mieux exploiter ? Écrivez-moi.
             </Text>
-          </motion.div>
+          </div>
 
-          <motion.div data-mobile-static
-            variants={fadeInUp}
+          <div
             className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-sand/50 shadow-sm"
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
@@ -119,10 +111,9 @@ export const ContactSection: React.FC = () => {
                 </Text>
               </motion.a>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
-
