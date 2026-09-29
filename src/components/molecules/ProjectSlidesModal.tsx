@@ -37,6 +37,16 @@ export function ProjectSlidesModal({ slideshowSrcs, projectTitle }: ProjectSlide
     closeBtnRef.current?.focus();
 
     const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        const controls = Array.from(dialog?.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], [tabindex="0"]') ?? []);
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last?.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first?.focus();
+        }
+      }
       if (e.key === 'Escape') {
         onClose();
         return;
