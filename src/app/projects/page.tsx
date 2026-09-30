@@ -10,6 +10,7 @@ import { Footer } from '@/components/organisms/Footer';
 import { allProjects } from '@/data/allProjects';
 import type { ProjectCategory } from '@/data/parallaxProjects';
 import { PresentationAwareLink } from '@/components/atoms/PresentationAwareLink';
+import { MiraklProjectLink } from '@/components/molecules/MiraklProjectLink';
 
 const projects = allProjects.filter(project => project.id !== '1');
 const filters: { value: ProjectCategory | 'all'; label: string }[] = [
@@ -46,8 +47,10 @@ function ProjectDeckCard({ project, index, total }: { project: (typeof projects)
         <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-text lg:mt-6 lg:line-clamp-5 lg:text-base">{project.description}</p>
       </div>
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-black/15 pt-3 text-sm">
-        <Link href={`/projects/${project.slug}`} className="inline-flex min-h-11 items-center font-semibold text-text-dark">Voir la fiche →</Link>
-        {demoLinks.map(link => <PresentationAwareLink key={link.url} href={link.url} className="inline-flex min-h-11 items-center text-text-dark underline underline-offset-4">{link.label} ↗</PresentationAwareLink>)}
+        {project.slug === 'hackathon-mirakl'
+          ? <MiraklProjectLink className="inline-flex min-h-11 items-center font-semibold text-text-dark" />
+          : <Link href={`/projects/${project.slug}`} className="inline-flex min-h-11 items-center font-semibold text-text-dark">Voir la fiche →</Link>}
+        {demoLinks.map(link => <PresentationAwareLink key={link.url} href={link.url} className="relative z-[2] inline-flex min-h-11 items-center text-text-dark underline underline-offset-4">{link.label} ↗</PresentationAwareLink>)}
       </div>
     </div>
   </motion.article>;
