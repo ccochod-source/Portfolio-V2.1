@@ -141,7 +141,13 @@ export function MiraklProjectLink({ className }: { className?: string }) {
     </Link>
     {origin && createPortal(
       <dialog ref={dialogRef} className={styles.dialog} aria-labelledby={titleId} aria-modal="true"
-        data-lenis-prevent onCancel={event => { event.preventDefault(); finish(); }}>
+        data-lenis-prevent onCancel={event => { event.preventDefault(); finish(); }}
+        onKeyDown={event => {
+          if (event.key === 'Tab') {
+            event.preventDefault();
+            skipRef.current?.focus({ preventScroll: true });
+          }
+        }}>
         <div ref={panelRef} className={styles.panel}>
           <div ref={stageRef} className={styles.stage}>
             <header className={styles.heading}>
